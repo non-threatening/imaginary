@@ -11,7 +11,7 @@ import {
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCoffee} from '@fortawesome/free-solid-svg-icons';
 
-import {MyComponent} from './MyComponent';
+import {DraggableBox} from './draggable';
 import {
   SpawnProvider,
   SpawnController,
@@ -32,7 +32,7 @@ const App: () => React$Node = () => {
               style={styles.scrollView}>
               <SpawnController
                 startCount={2}
-                spawn={<MyComponent />}
+                spawn={<DraggableBox />}
                 name="myComponent"
               />
             </ScrollView>
