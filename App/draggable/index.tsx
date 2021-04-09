@@ -8,7 +8,7 @@ import {
   PanGestureHandlerGestureEvent,
 } from 'react-native-gesture-handler';
 
-import {USE_NATIVE_DRIVER} from '../config';
+import {USE_NATIVE_DRIVER} from './config';
 
 type DraggableBoxProps = {
   minDist?: number;
@@ -20,6 +20,7 @@ export class DraggableBox extends Component<DraggableBoxProps> {
   private translateY: Animated.Value;
   private lastOffset: {x: number; y: number};
   private onGestureEvent: (event: PanGestureHandlerGestureEvent) => void;
+
   constructor(props: DraggableBoxProps) {
     super(props);
     this.translateX = new Animated.Value(0);
@@ -35,6 +36,12 @@ export class DraggableBox extends Component<DraggableBoxProps> {
         },
       ],
       {useNativeDriver: USE_NATIVE_DRIVER},
+      this.translateX.addListener(thing => {
+        console.log(thing.value);
+      }),
+      this.translateY.addListener(thing => {
+        console.log(thing.value);
+      }),
     );
   }
   private onHandlerStateChange = (event: PanGestureHandlerStateChangeEvent) => {
@@ -70,18 +77,6 @@ export class DraggableBox extends Component<DraggableBoxProps> {
     );
   }
 }
-
-// export default class Example extends Component {
-//   render() {
-//     return (
-//       <View style={styles.scrollView}>
-//         {/* <LoremIpsum words={40} /> */}
-//         <DraggableBox />
-//         {/* <LoremIpsum /> */}
-//       </View>
-//     );
-//   }
-// }
 
 const styles = StyleSheet.create({
   scrollView: {

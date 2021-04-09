@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCoffee} from '@fortawesome/free-solid-svg-icons';
-import Draggable from 'react-native-draggable';
 
 import {MyComponent} from './MyComponent';
 import {
@@ -36,24 +35,9 @@ const App: () => React$Node = () => {
                 spawn={<MyComponent />}
                 name="myComponent"
               />
-
-              <SpawnController
-                startCount={21}
-                name="text"
-                spawn={
-                  <View>
-                    <Text>Hello World</Text>
-                  </View>
-                }
-              />
             </ScrollView>
 
             <View>
-              <View style={styles.row}>
-                <AddSpawn name="text" label="Add Text" />
-                <ClearSpawns name="text" label="Clear Text" />
-              </View>
-
               <View style={styles.row}>
                 <AddSpawn name="myComponent" label="Spawn Component" />
                 <ClearSpawns name="myComponent" label="Clear Spawns" />
@@ -92,6 +76,7 @@ const styles = StyleSheet.create({
   body: {
     backgroundColor: '#666',
     height: '100%',
+    // flex: 1,
   },
   row: {
     flexDirection: 'row',

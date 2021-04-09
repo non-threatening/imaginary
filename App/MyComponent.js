@@ -1,14 +1,17 @@
 // /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {/* Text, View, */ useWindowDimensions} from 'react-native';
+// import {/* Text, View, */ useWindowDimensions} from 'react-native';
 // import {RemoveSpawn} from 'rn-spawn-component';
 // import Draggable from 'react-native-draggable';
 import {DraggableBox} from './draggable';
+// import RnGestureHandler from './test';
 
 export const MyComponent = props => {
   // const spawnNum = props.spawnNumber;
-  const window = useWindowDimensions();
+  // const window = useWindowDimensions();
   return (
+    // <RnGestureHandler />
+
     <DraggableBox />
 
     /*     <Draggable
