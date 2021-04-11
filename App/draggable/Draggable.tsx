@@ -11,9 +11,13 @@ import Knob from './knob';
 import {USE_NATIVE_DRIVER} from './config';
 
 type DraggableBoxProps = {
-  minDist?: number;
   boxStyle?: StyleProp<ViewStyle>;
+  minDist?: number;
+  spawnNum?: number;
 };
+
+let x = 0;
+let y = 0;
 
 export class DraggableBox extends Component<DraggableBoxProps> {
   private translateX: Animated.Value;
@@ -40,9 +44,11 @@ export class DraggableBox extends Component<DraggableBoxProps> {
       // Listeners
       this.translateX.addListener(thing => {
         console.log(thing.value);
+        // x = thing.value;
       }),
       this.translateY.addListener(thing => {
         console.log(thing.value);
+        // y = thing.value;
       }),
     );
   }
@@ -73,7 +79,7 @@ export class DraggableBox extends Component<DraggableBoxProps> {
             },
             this.props.boxStyle,
           ]}>
-          <Knob />
+          <Knob spawnNum={this.props.spawnNum} x={x} y={y} />
         </Animated.View>
       </PanGestureHandler>
     );
