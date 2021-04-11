@@ -11,7 +11,7 @@ import {
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCoffee} from '@fortawesome/free-solid-svg-icons';
 
-import {DraggableBox} from './draggable';
+import {KnobWrap} from './draggable';
 import {
   SpawnProvider,
   SpawnController,
@@ -31,16 +31,16 @@ const App: () => React$Node = () => {
               contentInsetAdjustmentBehavior="automatic"
               style={styles.scrollView}>
               <SpawnController
-                startCount={2}
-                spawn={<DraggableBox />}
-                name="myComponent"
+                startCount={1}
+                spawn={<KnobWrap />}
+                name="Knob"
               />
             </ScrollView>
 
             <View>
               <View style={styles.row}>
-                <AddSpawn name="myComponent" label="Spawn Component" />
-                <ClearSpawns name="myComponent" label="Clear Spawns" />
+                <AddSpawn name="Knob" label="Spawn Component" />
+                <ClearSpawns name="Knob" label="Clear Spawns" />
               </View>
 
               <View style={styles.row}>

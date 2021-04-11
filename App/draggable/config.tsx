@@ -1,1 +1,1 @@
-export const USE_NATIVE_DRIVER = false;
+export const USE_NATIVE_DRIVER = true;

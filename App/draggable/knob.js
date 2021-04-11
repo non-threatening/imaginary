@@ -1,0 +1,34 @@
+/* eslint-disable react-native/no-inline-styles */
+import React from 'react';
+import {Image, Pressable, StyleSheet} from 'react-native';
+
+const Knob = props => {
+  return (
+    <Pressable
+      style={styles.box}
+      onPress={() => {
+        console.warn('thing');
+      }}
+      onLongPress={() => {
+        console.warn('long thing');
+      }}>
+      <Image
+        source={{uri: 'https://reactnative.dev/docs/assets/p_cat1.png'}}
+        style={{width: 20, height: 20}}
+      />
+    </Pressable>
+  );
+};
+
+const styles = StyleSheet.create({
+  box: {
+    width: 50,
+    height: 50,
+    alignSelf: 'center',
+    backgroundColor: 'plum',
+    margin: 10,
+    zIndex: 200,
+  },
+});
+
+export default Knob;
