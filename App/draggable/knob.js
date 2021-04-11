@@ -3,7 +3,7 @@ import React from 'react';
 import {Image, Pressable, StyleSheet, Text} from 'react-native';
 
 const Knob = props => {
-  console.log(`preens: ${props.spawnNum} x: ${props.x} y: ${props.y}`);
+  console.log(`preens: ${props.spawnNum} x: ${props.xPos} y: ${props.yPos}`);
   return (
     <Pressable
       style={styles.box}
@@ -17,7 +17,13 @@ const Knob = props => {
         source={{uri: 'https://reactnative.dev/docs/assets/p_cat1.png'}}
         style={{width: 20, height: 20}}
       />
-      <Text>{props.spawnNum.toString()}</Text>
+      <Text>
+        {[
+          props.spawnNum.toString(),
+          props.xPos.toString(),
+          props.yPos.toString(),
+        ]}
+      </Text>
     </Pressable>
   );
 };
