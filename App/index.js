@@ -8,8 +8,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faCoffee} from '@fortawesome/free-solid-svg-icons';
+import {MaterialCommunityIcons} from '@expo/vector-icons';
 
 import {KnobWrap} from './draggable';
 import {
@@ -45,7 +44,13 @@ const App: () => React$Node = () => {
 
               <View style={styles.row}>
                 <RemoveAll
-                  prepend={<FontAwesomeIcon icon={faCoffee} size={32} />}
+                  prepend={
+                    <MaterialCommunityIcons
+                      name="bell-outline"
+                      size={24}
+                      // color="black"
+                    />
+                  }
                   label=" Remove "
                   android_ripple={{
                     color: 'white',

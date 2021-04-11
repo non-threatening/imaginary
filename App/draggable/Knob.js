@@ -16,7 +16,7 @@ const Knob = props => {
           console.warn('long thing');
         }}>
         <Image
-          source={{uri: 'https://reactnative.dev/docs/assets/p_cat1.png'}}
+          source={require('./img/Sine_White_100.gif')}
           style={styles.image}
         />
         <P>{spawnNum.toString()}</P>
