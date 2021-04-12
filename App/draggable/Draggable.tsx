@@ -13,6 +13,7 @@ import {USE_NATIVE_DRIVER} from './config';
 type DraggableBoxProps = {
   boxStyle?: StyleProp<ViewStyle>;
   minDist?: number;
+  name?: string;
   spawnNum?: number;
 };
 
@@ -74,6 +75,7 @@ export class DraggableBox extends Component<DraggableBoxProps> {
             this.props.boxStyle,
           ]}>
           <Knob
+            name={this.props.name}
             spawnNum={this.props.spawnNum}
             xPos={this.state.xPos}
             yPos={this.state.yPos}

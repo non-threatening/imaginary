@@ -8,10 +8,10 @@ export const SpawnController = props => {
 
   let reverseArray = knobs.reverse();
   let newKnobs = reverseArray.map((item, index) => {
-    // console.log(`item: ${item}`);
     return AddExtraProps(props.spawn, {
       spawnNumber: item.key,
       key: item.key,
+      name: props.name,
     });
   });
 
@@ -30,7 +30,6 @@ export const SpawnController = props => {
           key: Number.isFinite(Math.max(...controlSpawn.map(thing => thing[0])))
             ? Math.max(...controlSpawn.map(thing => thing[0]))
             : 0,
-          name: props.name,
         };
         setKnobs([...knobs, addKnob]);
         break;

@@ -4,7 +4,7 @@ import {images} from './img';
 // import {RemoveSpawn} from 'rn-spawn-component';
 
 const Knob = props => {
-  const {spawnNum, xPos, yPos} = props;
+  const {name, spawnNum, xPos, yPos} = props;
   const [playing, setPlaying] = useState(false);
   return (
     <>
@@ -21,7 +21,7 @@ const Knob = props => {
           source={playing ? images.sineFff : images.sinePaused}
           style={styles.image}
         />
-        <P>{spawnNum.toString()}</P>
+        <P>{[name, ': ', spawnNum.toString()]}</P>
         <P>{xPos.toFixed(1).toString()}</P>
         <P>{yPos.toFixed(1).toString()}</P>
       </Pressable>
