@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Animated, StyleProp, ViewStyle} from 'react-native';
+import {Animated} from 'react-native';
 import {
   PanGestureHandler,
   PanGestureHandlerGestureEvent,
@@ -11,10 +11,8 @@ import Knob from './Knob';
 import {USE_NATIVE_DRIVER} from './config';
 
 type DraggableBoxProps = {
-  boxStyle?: StyleProp<ViewStyle>;
-  minDist?: number;
   name?: string;
-  spawnNum?: number;
+  spawnNum: number;
 };
 
 export class DraggableBox extends Component<DraggableBoxProps> {

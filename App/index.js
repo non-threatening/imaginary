@@ -1,91 +1,33 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  StatusBar,
-  Text,
-  View,
-} from 'react-native';
-import {MaterialCommunityIcons} from '@expo/vector-icons';
+import {Dimensions, StyleSheet, StatusBar, View} from 'react-native';
 
+import {SpawnMenu} from './interface';
 import {KnobWrap} from './draggable';
-import {
-  SpawnProvider,
-  SpawnController,
-  AddSpawn,
-  ClearSpawns,
-  RemoveAll,
-} from 'rn-spawn-component';
+import {SpawnProvider, SpawnController} from 'rn-spawn-component';
+
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
 const App: () => React$Node = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
       <SpawnProvider>
-        <SafeAreaView>
-          <View style={styles.body}>
-            <ScrollView
-              contentInsetAdjustmentBehavior="automatic"
-              style={styles.scrollView}>
-              <SpawnController
-                startCount={1}
-                spawn={<KnobWrap />}
-                name="Knob"
-              />
-            </ScrollView>
+        <View style={styles.body}>
+          <SpawnController startCount={1} spawn={<KnobWrap />} name="Knob" />
+        </View>
 
-            <View>
-              <View style={styles.row}>
-                <AddSpawn name="Knob" label="Spawn Component" />
-                <ClearSpawns name="Knob" label="Clear Spawns" />
-              </View>
-
-              <View style={styles.row}>
-                <RemoveAll
-                  prepend={
-                    <MaterialCommunityIcons
-                      name="bell-outline"
-                      size={24}
-                      // color="black"
-                    />
-                  }
-                  label=" Remove "
-                  android_ripple={{
-                    color: 'white',
-                    radius: 10,
-                  }}
-                  append={<Text>all</Text>}
-                  buttonColor={'thistle'}
-                  pressedColor={'thistle'}
-                  style={{
-                    borderRadius: 10,
-                    width: 300,
-                  }}
-                  textStyle={{color: 'brown', fontSize: 21}}
-                />
-              </View>
-            </View>
-          </View>
-        </SafeAreaView>
+        <SpawnMenu />
       </SpawnProvider>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-  },
   body: {
     backgroundColor: '#000',
-    height: '100%',
-    // flex: 1,
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    height: height - 150,
+    width: width,
   },
 });
 

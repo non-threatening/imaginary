@@ -12,7 +12,7 @@ const Knob = props => {
       <Pressable
         style={styles.box}
         onPress={() => {
-          setPlaying(!playing);
+          tap();
         }}
         onLongPress={() => {
           console.warn('long thing');
@@ -27,7 +27,11 @@ const Knob = props => {
       </Pressable>
     </>
   );
-};
+
+  function tap() {
+    setPlaying(!playing);
+  }
+}; // Knob
 
 function P(props) {
   return <Text {...props} style={[props.style, styles.text]} />;
