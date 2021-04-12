@@ -1,22 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Image, Pressable, StyleSheet, Text} from 'react-native';
+import {images} from './img';
 // import {RemoveSpawn} from 'rn-spawn-component';
 
 const Knob = props => {
   const {spawnNum, xPos, yPos} = props;
+  const [playing, setPlaying] = useState(false);
   return (
     <>
       {/* <RemoveSpawn spawn={spawnNum} label={'Kill Me'} /> */}
       <Pressable
         style={styles.box}
         onPress={() => {
-          console.warn('thing');
+          setPlaying(!playing);
         }}
         onLongPress={() => {
           console.warn('long thing');
         }}>
         <Image
-          source={require('./img/Sine_White_100.gif')}
+          source={playing ? images.sineFff : images.sinePaused}
           style={styles.image}
         />
         <P>{spawnNum.toString()}</P>
@@ -33,20 +35,22 @@ function P(props) {
 
 const styles = StyleSheet.create({
   box: {
-    width: 50,
-    height: 50,
     alignSelf: 'center',
-    backgroundColor: 'plum',
+    backgroundColor: 'thistle',
+    borderRadius: 5,
+    height: 50,
     margin: 10,
+    width: 50,
     zIndex: 200,
   },
   image: {
     height: 50,
+    opacity: 0.5,
     position: 'absolute',
     width: 50,
   },
   text: {
-    color: '#fff',
+    color: '#000',
   },
 });
 
