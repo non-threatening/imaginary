@@ -1,111 +1,39 @@
-/* eslint-disable react-native/no-inline-styles */
-import React, {FunctionComponent, useState} from 'react';
-import {Alert, Modal, Pressable, StyleSheet, Text, View} from 'react-native';
-import {AddSpawn, ClearSpawns, RemoveAll} from 'rn-spawn-component';
-import {MaterialCommunityIcons} from '@expo/vector-icons';
+import React from 'react';
+import {Dimensions, StyleSheet, View} from 'react-native';
 
-// interface SpawnMenuProps {
-//   // modalVisible?: boolean;
-// }
+import {SpawnMenu} from './SpawnMenu';
+import {KnobWrap} from '../draggable';
+import {SpawnProvider, SpawnController} from 'rn-spawn-component';
 
-interface MenuVisible {
-  modalVisible?: boolean;
-}
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
-export const SpawnMenu: FunctionComponent<SpawnMenuProps> = () => {
-  const [modalVisible, setModalVisible] = useState<MenuVisible>(false);
+export function Interface() {
   return (
     <>
-      <View>
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-            setModalVisible(!modalVisible);
-          }}>
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <View style={styles.row}>
-                <AddSpawn name="Knob" label="Spawn Component" />
-                <ClearSpawns name="Knob" label="Clear Spawns" />
-              </View>
+      <SpawnProvider>
+        <View style={styles.body}>
+          <SpawnController startCount={1} spawn={<KnobWrap />} name="Knob" />
+        </View>
 
-              <View style={styles.row}>
-                <RemoveAll
-                  prepend={
-                    <MaterialCommunityIcons
-                      name="bell-outline"
-                      size={24}
-                      color="#fff"
-                    />
-                  }
-                  label=" Remove "
-                  android_ripple={{
-                    color: '#000',
-                  }}
-                  buttonColor={'thistle'}
-                  pressedColor={'thistle'}
-                  style={{
-                    borderRadius: 10,
-                    width: 300,
-                  }}
-                  textStyle={{color: 'brown', fontSize: 21}}
-                />
-              </View>
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}>
-                <Text style={styles.textStyle}>Hide Modal</Text>
-              </Pressable>
-            </View>
-          </View>
-        </Modal>
-        <Pressable
-          style={[styles.button, styles.buttonOpen]}
-          onPress={() => setModalVisible(true)}>
-          <Text style={styles.textStyle}>Show Modal</Text>
-        </Pressable>
-      </View>
+        <View style={styles.bottom}>
+          <SpawnMenu />
+        </View>
+      </SpawnProvider>
     </>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+  body: {
+    backgroundColor: '#000',
+    height: height - 100,
+    width: width,
   },
-  modalView: {
-    margin: 20,
-    backgroundColor: '#696969',
-    borderRadius: 20,
-    padding: 35,
+  bottom: {
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#05004c',
+    height: 100,
   },
 });

@@ -7623,10 +7623,10 @@ rimraf@~2.2.6:
   resolved "https://registry.npmjs.org/rimraf/-/rimraf-2.2.8.tgz"
   integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
 
-rn-spawn-component@^0.0.10:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/rn-spawn-component/-/rn-spawn-component-0.0.10.tgz#cbee597913dc357d9b8aefe3b53cd1fc90b58214"
-  integrity sha512-L6z6y2Meh5rMzHMMdxgc1nFpIQnKZtQWhezTI33fsUa0OwtzFFCC4Kssoin7RBfBNz+mXbJmSfFmQL88P5xMGQ==
+rn-spawn-component@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/rn-spawn-component/-/rn-spawn-component-0.0.11.tgz#2ae553695bb42339273bb4e473ca71160d4bee25"
+  integrity sha512-9TucylXmPFwCWz2D7NQdlpotkdFKF60idX7IPCvCrt3xIbNUSI+Fj7Af1yjU9WctguLm6b7dZBXhpXjFv0Mc+g==
 
 rsvp@^4.8.4:
   version "4.8.5"

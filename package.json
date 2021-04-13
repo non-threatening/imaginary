@@ -16,7 +16,7 @@
     "react-native": "~0.63.4",
     "react-native-gesture-handler": "~1.8.0",
     "react-native-unimodules": "~0.12.0",
-    "rn-spawn-component": "^0.0.10"
+    "rn-spawn-component": "^0.0.11"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
