@@ -3,6 +3,8 @@ import {Modal, Pressable, StyleSheet, Text, View} from 'react-native';
 import {AddSpawn, ClearSpawns, RemoveAll} from 'rn-spawn-component';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 
+import _style, {color} from '../style';
+
 export function SpawnMenu() {
   const [modalVisible, setModalVisible] = useState(false);
   return (
@@ -18,16 +20,22 @@ export function SpawnMenu() {
           <View style={styles.modalView}>
             <View style={styles.row}>
               <AddSpawn
+                android_ripple={{
+                  color: color.darkBlue,
+                }}
                 label="Spawn Component"
                 name="Knob"
-                style={[styles.button]}
-                textStyle={styles.textStyle}
+                style={[_style.button]}
+                textStyle={_style.textStyle}
               />
               <ClearSpawns
+                android_ripple={{
+                  color: color.darkBlue,
+                }}
                 label="Clear Spawns"
                 name="Knob"
-                style={[styles.button]}
-                textStyle={styles.textStyle}
+                style={[_style.button]}
+                textStyle={_style.textStyle}
               />
             </View>
 
@@ -42,25 +50,31 @@ export function SpawnMenu() {
                 }
                 label=" Remove "
                 android_ripple={{
-                  color: '#05004c',
+                  color: color.darkBlue,
                 }}
                 buttonColor={'thistle'}
                 pressedColor={'thistle'}
-                style={[styles.button]}
-                textStyle={styles.textStyle}
+                style={[_style.button]}
+                textStyle={_style.textStyle}
               />
             </View>
             <Pressable
-              style={[styles.button]}
+              android_ripple={{
+                color: color.darkBlue,
+              }}
+              style={[_style.button]}
               onPress={() => setModalVisible(!modalVisible)}>
-              <Text style={styles.textStyle}>Hide Modal</Text>
+              <Text style={_style.textStyle}>Hide Modal</Text>
             </Pressable>
           </View>
         </Modal>
         <Pressable
-          style={[styles.button]}
+          android_ripple={{
+            color: color.darkBlue,
+          }}
+          style={[_style.button]}
           onPress={() => setModalVisible(true)}>
-          <Text style={styles.textStyle}>Show Modal</Text>
+          <Text style={_style.textStyle}>Show Modal</Text>
         </Pressable>
       </View>
     </>
@@ -80,18 +94,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     shadowColor: '#000',
     elevation: 5,
-  },
-  button: {
-    backgroundColor: '#d8bfd8',
-    borderColor: '#daa1da',
-    borderWidth: 1,
-    borderRadius: 5,
-    elevation: 2,
-    padding: 10,
-  },
-  textStyle: {
-    color: '#05004c',
-    fontWeight: 'bold',
-    textAlign: 'center',
   },
 });

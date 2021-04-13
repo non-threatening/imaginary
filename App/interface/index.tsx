@@ -1,12 +1,10 @@
 import React from 'react';
-import {Dimensions, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 import {SpawnMenu} from './SpawnMenu';
 import {KnobWrap} from '../draggable';
-import {SpawnProvider, SpawnController} from 'rn-spawn-component';
-
-const width = Dimensions.get('window').width;
-const height = Dimensions.get('window').height;
+import {AddSpawn, SpawnProvider, SpawnController} from 'rn-spawn-component';
+import _style, {color, height, width} from '../style';
 
 export function Interface() {
   return (
@@ -18,6 +16,15 @@ export function Interface() {
 
         <View style={styles.bottom}>
           <SpawnMenu />
+          <AddSpawn
+            android_ripple={{
+              color: color.darkBlue,
+            }}
+            label="Spawn Component"
+            name="Knob"
+            style={[_style.button]}
+            textStyle={_style.textStyle}
+          />
         </View>
       </SpawnProvider>
     </>
@@ -32,8 +39,9 @@ const styles = StyleSheet.create({
   },
   bottom: {
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#05004c',
+    backgroundColor: color.darkBlue,
+    flexDirection: 'row',
     height: 100,
+    justifyContent: 'center',
   },
 });

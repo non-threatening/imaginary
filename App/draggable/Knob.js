@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {Image, Pressable, StyleSheet, Text} from 'react-native';
+
 import {images} from './img';
+import {color} from '../style';
 // import {RemoveSpawn} from 'rn-spawn-component';
 
 const Knob = props => {
@@ -16,6 +18,9 @@ const Knob = props => {
         }}
         onLongPress={() => {
           console.warn('long thing');
+        }}
+        android_ripple={{
+          color: color.darkBlue,
         }}>
         <Image
           source={playing ? images.sineFff : images.sinePaused}
@@ -42,16 +47,16 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: 'thistle',
     borderRadius: 5,
-    height: 50,
-    margin: 10,
-    width: 50,
+    height: 60,
+    padding: 2,
+    width: 60,
     zIndex: 200,
   },
   image: {
-    height: 50,
+    height: 60,
     opacity: 0.5,
     position: 'absolute',
-    width: 50,
+    width: 60,
   },
   text: {
     color: '#000',
