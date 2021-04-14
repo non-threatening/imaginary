@@ -3,7 +3,7 @@ import {StyleSheet, View} from 'react-native';
 
 import {SpawnMenu} from './SpawnMenu';
 import {KnobWrap} from '../draggable';
-import {AddSpawn, SpawnProvider, SpawnController} from 'rn-spawn-component';
+import {AddSpawn, SpawnProvider, SpawnController} from '../rn-spawn-component';
 import _style, {color, height, width} from '../style';
 
 export function Interface() {
@@ -11,7 +11,7 @@ export function Interface() {
     <>
       <SpawnProvider>
         <View style={styles.body}>
-          <SpawnController startCount={1} spawn={<KnobWrap />} name="Knob" />
+          <SpawnController startCount={1} spawn={<KnobWrap />} name="sine" />
         </View>
 
         <View style={styles.bottom}>
@@ -21,7 +21,7 @@ export function Interface() {
               color: color.darkBlue,
             }}
             label="Spawn Component"
-            name="Knob"
+            name="sine"
             style={[_style.button]}
             textStyle={_style.textStyle}
           />

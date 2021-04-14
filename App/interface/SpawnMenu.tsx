@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {Modal, Pressable, StyleSheet, Text, View} from 'react-native';
-import {AddSpawn, ClearSpawns, RemoveAll} from 'rn-spawn-component';
+import {AddSpawn, ClearSpawns, RemoveAll} from '../rn-spawn-component';
 // import {MaterialCommunityIcons} from '@expo/vector-icons';
+import {PostMessage, Sweep} from '../tone/oscFunctions';
 
 import _style, {color} from '../style';
 
@@ -24,7 +25,7 @@ export function SpawnMenu() {
                   color: color.darkBlue,
                 }}
                 label="Spawn Component"
-                name="Knob"
+                name="sine"
                 style={[_style.button]}
                 textStyle={_style.textStyle}
               />
@@ -33,7 +34,7 @@ export function SpawnMenu() {
                   color: color.darkBlue,
                 }}
                 label="Clear Spawns"
-                name="Knob"
+                name="sine"
                 style={[_style.button]}
                 textStyle={_style.textStyle}
               />
@@ -65,6 +66,22 @@ export function SpawnMenu() {
               style={[_style.button]}
               onPress={() => setModalVisible(!modalVisible)}>
               <Text style={_style.textStyle}>Hide Modal</Text>
+            </Pressable>
+            <Pressable
+              android_ripple={{
+                color: color.darkBlue,
+              }}
+              style={[_style.button]}
+              onPress={() => PostMessage('Webview connected')}>
+              <Text style={_style.textStyle}>PostMessage</Text>
+            </Pressable>
+            <Pressable
+              android_ripple={{
+                color: color.darkBlue,
+              }}
+              style={[_style.button]}
+              onPress={() => Sweep()}>
+              <Text style={_style.textStyle}>sweep</Text>
             </Pressable>
           </View>
         </Modal>
