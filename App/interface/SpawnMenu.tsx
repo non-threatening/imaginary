@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Modal, Pressable, StyleSheet, Text, View} from 'react-native';
 import {AddSpawn, ClearSpawns, RemoveAll} from 'rn-spawn-component';
-import {MaterialCommunityIcons} from '@expo/vector-icons';
+// import {MaterialCommunityIcons} from '@expo/vector-icons';
 
 import _style, {color} from '../style';
 
@@ -41,13 +41,13 @@ export function SpawnMenu() {
 
             <View style={styles.row}>
               <RemoveAll
-                prepend={
-                  <MaterialCommunityIcons
-                    name="bell-outline"
-                    size={18}
-                    color="#05004c"
-                  />
-                }
+                // prepend={
+                //   <MaterialCommunityIcons
+                //     name="bell-outline"
+                //     size={18}
+                //     color="#05004c"
+                //   />
+                // }
                 label=" Remove "
                 android_ripple={{
                   color: color.darkBlue,
