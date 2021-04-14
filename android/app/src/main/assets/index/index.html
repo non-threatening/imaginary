@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <!-- <script type="text/javascript" src="Tone_13.4.9.js"></script> -->
+  <script type="text/javascript" src="Tone.min.js"></script>
+
+  <script>
+    const osc = [];
+    const panner = [];
+    const output = new Tone.Filter(440, "lowpass");
+    output.toMaster();
+
+
+    function waitForBridge() {
+      if (window.postMessage.length !== 1) {
+        setTimeout(waitForBridge, 200);
+      } else {
+        window.ReactNativeWebView.postMessage('postMessage');
+      }
+    }
+    window.onload = waitForBridge;
+  </script>
+
+</head>
+
+</html>

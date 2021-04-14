@@ -1,12 +1,4 @@
 {
-  "name": "exmaginary",
-  "displayName": "exmaginary",
-  "expo": {
-    "name": "exmaginary",
-    "slug": "exmaginary",
-    "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
-  }
+  "name": "Imaginary",
+  "displayName": "Imaginary"
 }
