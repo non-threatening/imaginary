@@ -1,5 +1,5 @@
 import React, {createContext, useContext, useReducer} from 'react';
-import {AddOsc} from '../tone/oscFunctions';
+import {addOsc} from '../tone/oscFunctions';
 
 export const initialState = {
   spawnArray: [],
@@ -15,7 +15,7 @@ export const reducer = (state, action) => {
     state.spawnArray.push([incSpawn, name]);
     const arraySpawn = [...state.spawnArray];
     /*  */
-    AddOsc(incSpawn, name, '-Infinity');
+    addOsc(incSpawn, name, '-Infinity');
     /*  */
     return state.spawnArray.length ? arraySpawn : [0, name];
   };

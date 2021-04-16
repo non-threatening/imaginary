@@ -3,7 +3,7 @@ import {Image, Pressable, StyleSheet, Text} from 'react-native';
 
 import {images} from './img';
 import {color} from '../style';
-import {soloPause} from '../tone/oscFunctions';
+import {soloPause} from '../tone';
 // import {RemoveSpawn} from 'rn-spawn-component';
 
 const Knob = props => {
