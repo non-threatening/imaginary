@@ -3,12 +3,13 @@ import {Image, Pressable, StyleSheet, Text} from 'react-native';
 
 import {images} from './img';
 import {color} from '../style';
-import {soloPause} from '../tone';
+import {soloPause, soloPitchVolume} from '../tone';
 // import {RemoveSpawn} from 'rn-spawn-component';
 
 const Knob = props => {
   const {name, spawnNum, xPos, yPos} = props;
   const [playing, setPlaying] = useState(false);
+  soloPitchVolume(spawnNum, xPos, yPos);
   return (
     <>
       {/* <RemoveSpawn spawn={spawnNum} label={'Kill Me'} /> */}
@@ -28,8 +29,8 @@ const Knob = props => {
           style={styles.image}
         />
         <P>{[name, ': ', spawnNum.toString()]}</P>
-        <P>{xPos.toFixed(1).toString()}</P>
-        <P>{yPos.toFixed(1).toString()}</P>
+        {/* <P>{xPos.toFixed(1).toString()}</P>
+        <P>{yPos.toFixed(1).toString()}</P> */}
       </Pressable>
     </>
   );

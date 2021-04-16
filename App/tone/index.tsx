@@ -13,10 +13,10 @@ export function Sweep() {
       osc[666] = new Tone.Oscillator({
         'type': 'sine',
         'volume': '-Infinity',
-        'frequency': '400'
+        'frequency': '666'
       }).chain(output, Tone.Master).start();
       osc[666].volume.rampTo(-1, 0.2);
-      osc[666].frequency.rampTo(1500, 5);
+      osc[666].frequency.rampTo(100, 5);
       
       setTimeout(() => {
         osc[666].volume.rampTo(-Infinity, 0.2);

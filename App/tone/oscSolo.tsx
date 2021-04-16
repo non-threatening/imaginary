@@ -7,7 +7,7 @@ export function addOsc(osc, name, muted) {
       `);
 }
 
-export function soloDisposeOsc(osc) {
+export function soloDispose(osc) {
   return this.webview.injectJavaScript(`
     osc[${osc}].volume.rampTo(-Infinity, 0.2);
     setTimeout(() => {
@@ -20,12 +20,10 @@ export function soloPause(osc, playing) {
   if (!playing) {
     return this.webview.injectJavaScript(`
     osc[${osc}].volume.rampTo(-Infinity, 0.05);
-    window.ReactNativeWebView.postMessage('${osc} pause');
   `);
   } else {
     return this.webview.injectJavaScript(`
     osc[${osc}].volume.rampTo(-5, 0.05);
-    window.ReactNativeWebView.postMessage('${osc} play');
   `);
   }
 }
@@ -34,4 +32,12 @@ export function soloVolume(osc, db) {
   return this.webview.injectJavaScript(`
     osc[${osc}].volume.rampTo(${db}, 0.05);
   `);
+}
+
+export function soloPitchVolume(osc, db, pitch) {
+  this.webview.injectJavaScript(`
+      osc[${osc}].volume.rampTo(${db}, 0.1);
+      osc[${osc}].frequency.rampTo(${pitch}, 0.05);
+      window.ReactNativeWebView.postMessage('${osc}, ${db}, ${pitch}');
+    `);
 }
