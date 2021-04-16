@@ -3,6 +3,7 @@ import {Image, Pressable, StyleSheet, Text} from 'react-native';
 
 import {images} from './img';
 import {color} from '../style';
+import {soloPause} from '../tone/oscFunctions';
 // import {RemoveSpawn} from 'rn-spawn-component';
 
 const Knob = props => {
@@ -35,6 +36,7 @@ const Knob = props => {
 
   function tap() {
     setPlaying(!playing);
+    soloPause(spawnNum, !playing);
   }
 }; // Knob
 

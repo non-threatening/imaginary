@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Modal, Pressable, StyleSheet, Text, View} from 'react-native';
 import {AddSpawn, ClearSpawns, RemoveAll} from '../rn-spawn-component';
 // import {MaterialCommunityIcons} from '@expo/vector-icons';
-import {PostMessage, Sweep} from '../tone/oscFunctions';
+import {postMessage, Sweep} from '../tone/oscFunctions';
 
 import _style, {color} from '../style';
 
@@ -72,8 +72,8 @@ export function SpawnMenu() {
                 color: color.darkBlue,
               }}
               style={[_style.button]}
-              onPress={() => PostMessage('Webview connected')}>
-              <Text style={_style.textStyle}>PostMessage</Text>
+              onPress={() => postMessage('Webview connected')}>
+              <Text style={_style.textStyle}>postMessage</Text>
             </Pressable>
             <Pressable
               android_ripple={{

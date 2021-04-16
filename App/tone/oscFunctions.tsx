@@ -1,8 +1,7 @@
 /* Webview test */
-export function PostMessage(string) {
-  console.log(string);
+export function postMessage(string) {
   return this.webview.injectJavaScript(`
-    window.ReactNativeWebView.postMessage(${string});
+    window.ReactNativeWebView.postMessage('${string}');
   `);
 }
 
@@ -30,13 +29,27 @@ export function SetVolumeMaster(db) {
 
 /* Knob specific */
 
-export function AddOsc(key, name, muted) {
+export function AddOsc(osc, name, muted) {
   return this.webview.injectJavaScript(`
-      osc[${this.key}] = new Tone.Oscillator({
+      osc[${osc}] = new Tone.Oscillator({
         'type': '${name}',
         'volume': '${muted}'
       }).chain(output, Tone.Master).start();
       `);
+}
+
+export function soloPause(osc, playing) {
+  if (!playing) {
+    return this.webview.injectJavaScript(`
+    osc[${osc}].volume.rampTo(-Infinity, 0.05);
+    window.ReactNativeWebView.postMessage('${osc} pause');
+  `);
+  } else {
+    return this.webview.injectJavaScript(`
+    osc[${osc}].volume.rampTo(-5, 0.05);
+    window.ReactNativeWebView.postMessage('${osc} play');
+  `);
+  }
 }
 
 export function KillSingleOsc(osc) {
