@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Image, Pressable, StyleSheet, Text} from 'react-native';
 
 import {images} from './img';
+import {Popup} from './popup';
 import {color} from '../style';
 import {soloPause, soloPitchVolume} from '../tone';
 // import {RemoveSpawn} from 'rn-spawn-component';
@@ -33,6 +34,7 @@ const Knob = props => {
           source={playing ? images.sineFff : images.sinePaused}
           style={styles.image}
         />
+        <Popup />
         <P>{[name, ': ', spawnNum.toString()]}</P>
         <P>{xPos.toFixed(3).toString()}</P>
         <P>{yPos.toFixed(3).toString()}</P>
