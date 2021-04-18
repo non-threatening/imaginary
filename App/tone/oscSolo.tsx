@@ -20,10 +20,12 @@ export function soloPause(osc, playing) {
   if (!playing) {
     return this.webview.injectJavaScript(`
     osc[${osc}].volume.rampTo(-Infinity, 0.05);
+    window.ReactNativeWebView.postMessage('${osc}, ${playing}');
   `);
   } else {
     return this.webview.injectJavaScript(`
     osc[${osc}].volume.rampTo(-5, 0.05);
+    window.ReactNativeWebView.postMessage('${osc}, ${playing}');
   `);
   }
 }

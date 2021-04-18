@@ -6,7 +6,9 @@ import {
   PanGestureHandlerStateChangeEvent,
   State,
 } from 'react-native-gesture-handler';
+
 import Knob from './Knob';
+import {height, width} from '../style';
 
 import {USE_NATIVE_DRIVER} from './config';
 
@@ -60,7 +62,9 @@ export class DraggableBox extends Component<DraggableBoxProps> {
       <PanGestureHandler
         {...this.props}
         onGestureEvent={this.onGestureEvent}
-        onHandlerStateChange={this.onHandlerStateChange}>
+        onHandlerStateChange={this.onHandlerStateChange}
+        minDist={5}
+      >
         <Animated.View
           style={[
             {
@@ -70,12 +74,13 @@ export class DraggableBox extends Component<DraggableBoxProps> {
               ],
             },
             this.props.boxStyle,
-          ]}>
+          ]}
+        >
           <Knob
             name={this.props.name}
             spawnNum={this.props.spawnNum}
-            xPos={this.state.xPos}
-            yPos={this.state.yPos}
+            xPos={this.state.xPos / width / 2 + 0.5}
+            yPos={this.state.yPos / height / 2 + 0.5}
           />
         </Animated.View>
       </PanGestureHandler>

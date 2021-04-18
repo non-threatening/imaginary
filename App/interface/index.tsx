@@ -11,7 +11,7 @@ export function Interface() {
     <>
       <SpawnProvider>
         <View style={styles.body}>
-          <SpawnController startCount={1} spawn={<KnobWrap />} name="sine" />
+          <SpawnController spawn={<KnobWrap />} name="sine" />
         </View>
 
         <View style={styles.bottom}>

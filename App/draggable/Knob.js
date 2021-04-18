@@ -23,14 +23,15 @@ const Knob = props => {
         }}
         android_ripple={{
           color: color.darkBlue,
-        }}>
+        }}
+      >
         <Image
           source={playing ? images.sineFff : images.sinePaused}
           style={styles.image}
         />
         <P>{[name, ': ', spawnNum.toString()]}</P>
-        {/* <P>{xPos.toFixed(1).toString()}</P>
-        <P>{yPos.toFixed(1).toString()}</P> */}
+        <P>{xPos.toFixed(3).toString()}</P>
+        <P>{yPos.toFixed(3).toString()}</P>
       </Pressable>
     </>
   );
