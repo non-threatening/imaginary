@@ -28,7 +28,7 @@ export class DraggableBox extends Component<DraggableBoxProps> {
     this.translateX = new Animated.Value(0);
     this.translateY = new Animated.Value(0);
     this.lastOffset = {x: 0, y: 0};
-    this.state = {xPos: 0, yPos: 0};
+    this.state = {xPos: 0.5, yPos: 0.4};
     this.onGestureEvent = Animated.event(
       [
         {
@@ -40,10 +40,10 @@ export class DraggableBox extends Component<DraggableBoxProps> {
       ],
       {useNativeDriver: USE_NATIVE_DRIVER},
       this.translateX.addListener(thing => {
-        this.setState({xPos: thing.value});
+        this.setState({xPos: thing.value / width / 2 + 0.5});
       }),
       this.translateY.addListener(thing => {
-        this.setState({yPos: thing.value});
+        this.setState({yPos: thing.value / height / 2 + 0.5});
       }),
     );
   }
@@ -79,8 +79,8 @@ export class DraggableBox extends Component<DraggableBoxProps> {
           <Knob
             name={this.props.name}
             spawnNum={this.props.spawnNum}
-            xPos={this.state.xPos / width / 2 + 0.5}
-            yPos={this.state.yPos / height / 2 + 0.5}
+            xPos={this.state.xPos}
+            yPos={this.state.yPos}
           />
         </Animated.View>
       </PanGestureHandler>

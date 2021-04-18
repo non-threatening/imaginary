@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Image, Pressable, StyleSheet, Text} from 'react-native';
 
 import {images} from './img';
@@ -7,9 +7,13 @@ import {soloPause, soloPitchVolume} from '../tone';
 // import {RemoveSpawn} from 'rn-spawn-component';
 
 const Knob = props => {
-  const {name, spawnNum, xPos, yPos} = props;
+  const {name, spawnNum, xPos, yPos = 400} = props;
   const [playing, setPlaying] = useState(false);
-  soloPitchVolume(spawnNum, xPos, yPos);
+
+  useEffect(() => {
+    soloPitchVolume(spawnNum, xPos * 50 - 50, yPos * 1000, playing);
+  }, [spawnNum, xPos, yPos, playing]);
+
   return (
     <>
       {/* <RemoveSpawn spawn={spawnNum} label={'Kill Me'} /> */}
