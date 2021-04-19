@@ -25,7 +25,7 @@ export function Interface() {
           <SpawnMenu />
           <AddSpawn
             android_ripple={{
-              color: color.darkBlue,
+              color: color.ripple,
             }}
             label="Spawn Component"
             name="sine"

@@ -4,8 +4,9 @@ export const width = Dimensions.get('window').width;
 export const height = Dimensions.get('window').height;
 
 export const color = {
-  pink: '#d8bfd8',
   darkBlue: '#05004c',
+  pink: '#d8bfd8',
+  ripple: 'rgba(0, 255, 0, 0.5)',
 };
 
 export default StyleSheet.create({

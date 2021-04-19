@@ -17,12 +17,13 @@ export function SpawnMenu() {
           visible={modalVisible}
           onRequestClose={() => {
             setModalVisible(!modalVisible);
-          }}>
+          }}
+        >
           <View style={styles.modalView}>
             <View style={styles.row}>
               <AddSpawn
                 android_ripple={{
-                  color: color.darkBlue,
+                  color: color.ripple,
                 }}
                 label="Spawn Component"
                 name="sine"
@@ -31,7 +32,7 @@ export function SpawnMenu() {
               />
               <ClearSpawns
                 android_ripple={{
-                  color: color.darkBlue,
+                  color: color.ripple,
                 }}
                 label="Clear Spawns"
                 name="sine"
@@ -51,7 +52,7 @@ export function SpawnMenu() {
                 // }
                 label=" Remove "
                 android_ripple={{
-                  color: color.darkBlue,
+                  color: color.ripple,
                 }}
                 buttonColor={'thistle'}
                 pressedColor={'thistle'}
@@ -61,36 +62,40 @@ export function SpawnMenu() {
             </View>
             <Pressable
               android_ripple={{
-                color: color.darkBlue,
+                color: color.ripple,
               }}
               style={[_style.button]}
-              onPress={() => setModalVisible(!modalVisible)}>
+              onPress={() => setModalVisible(!modalVisible)}
+            >
               <Text style={_style.textStyle}>Hide Modal</Text>
             </Pressable>
             <Pressable
               android_ripple={{
-                color: color.darkBlue,
+                color: color.ripple,
               }}
               style={[_style.button]}
-              onPress={() => postMessage('Webview connected')}>
+              onPress={() => postMessage('Webview connected')}
+            >
               <Text style={_style.textStyle}>postMessage</Text>
             </Pressable>
             <Pressable
               android_ripple={{
-                color: color.darkBlue,
+                color: color.ripple,
               }}
               style={[_style.button]}
-              onPress={() => Sweep()}>
+              onPress={() => Sweep()}
+            >
               <Text style={_style.textStyle}>sweep</Text>
             </Pressable>
           </View>
         </Modal>
         <Pressable
           android_ripple={{
-            color: color.darkBlue,
+            color: color.ripple,
           }}
           style={[_style.button]}
-          onPress={() => setModalVisible(true)}>
+          onPress={() => setModalVisible(true)}
+        >
           <Text style={_style.textStyle}>Show Modal</Text>
         </Pressable>
       </View>
