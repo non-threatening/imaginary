@@ -1,8 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {Image, Pressable, StyleSheet, Text} from 'react-native';
+import {
+  Menu,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+  renderers,
+} from 'react-native-popup-menu';
+const {Popover} = renderers;
 
 import {images} from './img';
-import {Popup} from './popup';
 import {color} from '../style';
 import {soloPause, soloPitchVolume} from '../tone';
 // import {RemoveSpawn} from 'rn-spawn-component';
@@ -10,6 +17,7 @@ import {soloPause, soloPitchVolume} from '../tone';
 const Knob = props => {
   const {name, spawnNum, xPos, yPos = 400} = props;
   const [playing, setPlaying] = useState(false);
+  const [opened, setOpened] = useState(false);
 
   useEffect(() => {
     soloPitchVolume(spawnNum, xPos * 50 - 50, yPos * 1000, playing);
@@ -20,24 +28,32 @@ const Knob = props => {
       {/* <RemoveSpawn spawn={spawnNum} label={'Kill Me'} /> */}
       <Pressable
         style={styles.box}
+        android_ripple={{
+          color: color.darkBlue,
+        }}
         onPress={() => {
           tap();
         }}
         onLongPress={() => {
-          console.warn('long thing');
-        }}
-        android_ripple={{
-          color: color.darkBlue,
+          long();
         }}
       >
         <Image
           source={playing ? images.sineFff : images.sinePaused}
           style={styles.image}
         />
-        <Popup />
         <P>{[name, ': ', spawnNum.toString()]}</P>
         <P>{xPos.toFixed(3).toString()}</P>
         <P>{yPos.toFixed(3).toString()}</P>
+        <Menu name={spawnNum.toString()} opened={opened} renderer={Popover}>
+          <MenuTrigger style={styles.trigger} />
+          <MenuOptions>
+            <MenuOption onSelect={() => alert('Save')} text="Save" />
+            <MenuOption onSelect={() => setOpened(!opened)}>
+              <P style={styles.text}>Close</P>
+            </MenuOption>
+          </MenuOptions>
+        </Menu>
       </Pressable>
     </>
   );
@@ -45,6 +61,10 @@ const Knob = props => {
   function tap() {
     setPlaying(!playing);
     soloPause(spawnNum, !playing);
+  }
+
+  function long() {
+    setOpened(!opened);
   }
 }; // Knob
 
@@ -70,6 +90,11 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#000',
+  },
+  trigger: {
+    width: 0,
+    height: 0,
+    overflow: 'hidden',
   },
 });
 
