@@ -8,7 +8,7 @@ import {Interface} from './interface';
 const App = () => {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="light-content" />
       <MenuProvider>
         <WebAudio />
         <Interface />

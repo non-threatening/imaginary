@@ -1,7 +1,9 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import {Dimensions, StatusBar, StyleSheet} from 'react-native';
 
+const h = Dimensions.get('window').height;
+const statusHeight = StatusBar.currentHeight;
+export const height = h - statusHeight;
 export const width = Dimensions.get('window').width;
-export const height = Dimensions.get('window').height;
 
 export const color = {
   darkBlue: '#05004c',
@@ -11,16 +13,17 @@ export const color = {
 
 export default StyleSheet.create({
   button: {
-    backgroundColor: color.pink,
-    borderColor: '#daa1da',
+    backgroundColor: 'rgba(255, 0, 0, 0.5)',
+    borderColor: color.ripple,
+    borderStyle: 'dotted',
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 3,
     elevation: 2,
     padding: 10,
   },
   textStyle: {
-    color: color.darkBlue,
-    fontWeight: 'bold',
+    color: color.pink,
+    // fontWeight: 'bold',
     textAlign: 'center',
   },
 });

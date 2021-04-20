@@ -1,12 +1,5 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {
-  Menu,
-  MenuOptions,
-  MenuOption,
-  MenuTrigger,
-} from 'react-native-popup-menu';
+import {StyleSheet, View} from 'react-native';
 
 import {SpawnMenu} from './SpawnMenu';
 import {KnobWrap} from '../draggable';
@@ -32,20 +25,6 @@ export function Interface() {
             style={[_style.button]}
             textStyle={_style.textStyle}
           />
-          <Menu>
-            <MenuTrigger text="Select action" />
-            <MenuOptions>
-              <MenuOption onSelect={() => alert(`Save`)} text="Save" />
-              <MenuOption onSelect={() => alert(`Delete`)}>
-                <Text style={{color: 'red'}}>Delete</Text>
-              </MenuOption>
-              <MenuOption
-                onSelect={() => alert(`Not called`)}
-                disabled={true}
-                text="Disabled"
-              />
-            </MenuOptions>
-          </Menu>
         </View>
       </SpawnProvider>
     </>
@@ -55,14 +34,17 @@ export function Interface() {
 const styles = StyleSheet.create({
   body: {
     backgroundColor: '#000',
-    height: height - 100,
+    height: height - 120,
     width: width,
   },
   bottom: {
     alignItems: 'center',
-    backgroundColor: color.darkBlue,
+    backgroundColor: 'rgb(36, 118, 36)',
+    borderColor: 'rgb(0, 255, 0)',
+    borderStyle: 'dotted',
+    borderTopWidth: 1,
     flexDirection: 'row',
-    height: 100,
+    height: 120,
     justifyContent: 'center',
   },
 });

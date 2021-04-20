@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Image, Pressable, StyleSheet, Text} from 'react-native';
+import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import {
   Menu,
   MenuOptions,
@@ -12,6 +12,8 @@ const {Popover} = renderers;
 import {images} from './img';
 import {color} from '../style';
 import {soloPause, soloPitchVolume} from '../tone';
+import _style from '../style';
+
 // import {RemoveSpawn} from 'rn-spawn-component';
 
 const Knob = props => {
@@ -29,7 +31,7 @@ const Knob = props => {
       <Pressable
         style={styles.box}
         android_ripple={{
-          color: color.darkBlue,
+          color: color.ripple,
         }}
         onPress={() => {
           tap();
@@ -43,17 +45,26 @@ const Knob = props => {
           style={styles.image}
         />
         <P>{[name, ': ', spawnNum.toString()]}</P>
-        <P>{xPos.toFixed(3).toString()}</P>
-        <P>{yPos.toFixed(3).toString()}</P>
-        <Menu name={spawnNum.toString()} opened={opened} renderer={Popover}>
+        <Menu
+          name={spawnNum.toString()}
+          onBackdropPress={() => setOpened(!opened)}
+          opened={opened}
+          renderer={Popover}
+          rendererProps={{anchorStyle: styles.anchorStyle}}
+          style={styles.menu}
+        >
           <MenuTrigger style={styles.trigger} />
-          <MenuOptions>
-            <MenuOption onSelect={() => alert('Save')} text="Save" />
+          <MenuOptions customStyles={optionsStyles}>
+            <MenuOption onSelect={() => console.warn('Save')}>
+              <Button text="Sav" />
+            </MenuOption>
             <MenuOption onSelect={() => setOpened(!opened)}>
-              <P style={styles.text}>Close</P>
+              <Button text="Close" />
             </MenuOption>
           </MenuOptions>
         </Menu>
+        <P>{xPos.toFixed(3).toString()}</P>
+        <P>{yPos.toFixed(3).toString()}</P>
       </Pressable>
     </>
   );
@@ -72,7 +83,18 @@ function P(props) {
   return <Text {...props} style={[props.style, styles.text]} />;
 }
 
+function Button(props) {
+  return (
+    <View style={_style.button}>
+      <Text style={_style.textStyle}>{props.text}</Text>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
+  anchorStyle: {
+    backgroundColor: 'rgba(0, 255, 0, 0.666)',
+  },
   box: {
     alignSelf: 'center',
     backgroundColor: 'thistle',
@@ -97,5 +119,22 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
 });
+
+const optionsStyles = {
+  optionsContainer: {
+    backgroundColor: 'rgba(0, 255, 0, 0.5)',
+    padding: 1,
+    borderColor: 'rgb(0, 255, 0)',
+    borderStyle: 'dotted',
+    borderWidth: 1,
+  },
+  optionWrapper: {
+    // backgroundColor: 'rgba(255, 0, 0, 0.5)',
+    margin: 3,
+  },
+  optionText: {
+    color: '#fff',
+  },
+};
 
 export default Knob;
