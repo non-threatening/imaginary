@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Modal, Pressable, StyleSheet, Text, View} from 'react-native';
 import {AddSpawn, ClearSpawns, RemoveAll} from '../rn-spawn-component';
-// import {MaterialCommunityIcons} from '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {postMessage, Sweep} from '../tone';
 
 import _style, {color} from '../style';
@@ -43,19 +43,13 @@ export function SpawnMenu() {
 
             <View style={styles.row}>
               <RemoveAll
-                // prepend={
-                //   <MaterialCommunityIcons
-                //     name="bell-outline"
-                //     size={18}
-                //     color="#05004c"
-                //   />
-                // }
-                label=" Remove "
+                prepend={
+                  <Icon name="bell-outline" size={18} color={color.outline} />
+                }
+                label=" Remove"
                 android_ripple={{
                   color: color.ripple,
                 }}
-                buttonColor={'thistle'}
-                pressedColor={'thistle'}
                 style={[_style.button]}
                 textStyle={_style.textStyle}
               />
@@ -109,10 +103,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   modalView: {
-    margin: 20,
-    backgroundColor: 'rgba(200,200,200,.9)',
-    borderRadius: 5,
-    padding: 35,
+    margin: 15,
+    backgroundColor: color.primary,
+    borderColor: color.outline,
+    borderRadius: 3,
+    borderStyle: 'dotted',
+    borderWidth: 1,
+    padding: 15,
     alignItems: 'center',
     shadowColor: '#000',
     elevation: 5,

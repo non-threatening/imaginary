@@ -6,14 +6,18 @@ export const height = h - statusHeight;
 export const width = Dimensions.get('window').width;
 
 export const color = {
+  primary: 'rgba(0, 255, 0, 0.2)',
+  secondary: 'rgba(0, 0, 0, 0.5)',
+  outline: 'rgba(0, 255, 0, 0.75)',
+
   darkBlue: '#05004c',
   pink: '#d8bfd8',
-  ripple: 'rgba(0, 255, 0, 0.5)',
+  ripple: 'rgba(0, 255, 0, 0.2)',
 };
 
 export default StyleSheet.create({
   button: {
-    backgroundColor: 'rgba(255, 0, 0, 0.5)',
+    backgroundColor: color.secondary,
     borderColor: color.ripple,
     borderStyle: 'dotted',
     borderWidth: 1,
@@ -22,7 +26,7 @@ export default StyleSheet.create({
     padding: 10,
   },
   textStyle: {
-    color: color.pink,
+    color: 'rgba(255, 255, 255, 0.75)',
     // fontWeight: 'bold',
     textAlign: 'center',
   },

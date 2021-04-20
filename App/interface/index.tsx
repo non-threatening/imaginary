@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {SpawnMenu} from './SpawnMenu';
 import {KnobWrap} from '../draggable';
@@ -25,6 +26,9 @@ export function Interface() {
             style={[_style.button]}
             textStyle={_style.textStyle}
           />
+          <Text>
+            <Icon name="baseball-bat" size={30} color="#900" />
+          </Text>
         </View>
       </SpawnProvider>
     </>
