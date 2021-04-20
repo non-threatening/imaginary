@@ -8,15 +8,16 @@ import {
   renderers,
 } from 'react-native-popup-menu';
 const {Popover} = renderers;
+import {useSpawnArray} from '../rn-spawn-component';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {images} from './img';
 import {color} from '../style';
 import {soloPause, soloPitchVolume} from '../tone';
 import _style from '../style';
 
-// import {RemoveSpawn} from 'rn-spawn-component';
-
 const Knob = props => {
+  const [{}, dispatchSpawn] = useSpawnArray();
   const {name, spawnNum, xPos, yPos = 400} = props;
   const [playing, setPlaying] = useState(false);
   const [opened, setOpened] = useState(false);
@@ -27,7 +28,6 @@ const Knob = props => {
 
   return (
     <>
-      {/* <RemoveSpawn spawn={spawnNum} label={'Kill Me'} /> */}
       <Pressable
         style={styles.box}
         android_ripple={{
@@ -55,11 +55,18 @@ const Knob = props => {
         >
           <MenuTrigger style={styles.trigger} />
           <MenuOptions customStyles={optionsStyles}>
-            <MenuOption onSelect={() => console.warn('Save')}>
-              <Button text="Sav" />
-            </MenuOption>
             <MenuOption onSelect={() => setOpened(!opened)}>
-              <Button text="Close" />
+              <Text>
+                <Icon
+                  name={'close-box-outline'}
+                  size={32}
+                  color={color.outline}
+                />
+              </Text>
+            </MenuOption>
+
+            <MenuOption onSelect={() => removeKind(spawnNum)}>
+              <Button text=" Remove" icon="close-box-outline" />
             </MenuOption>
           </MenuOptions>
         </Menu>
@@ -77,6 +84,10 @@ const Knob = props => {
   function long() {
     setOpened(!opened);
   }
+
+  function removeKind() {
+    dispatchSpawn({type: 'REMOVE_SINGLE_SPAWN', payload: spawnNum});
+  }
 }; // Knob
 
 function P(props) {
@@ -86,6 +97,9 @@ function P(props) {
 function Button(props) {
   return (
     <View style={_style.button}>
+      <Text>
+        <Icon name={props.icon} size={26} color={color.outline} />
+      </Text>
       <Text style={_style.textStyle}>{props.text}</Text>
     </View>
   );
@@ -93,11 +107,11 @@ function Button(props) {
 
 const styles = StyleSheet.create({
   anchorStyle: {
-    backgroundColor: 'rgba(0, 255, 0, 0.666)',
+    backgroundColor: color.outline,
   },
   box: {
     alignSelf: 'center',
-    backgroundColor: 'thistle',
+    backgroundColor: color.outline,
     borderRadius: 5,
     height: 60,
     padding: 2,
@@ -106,12 +120,13 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 60,
-    opacity: 0.5,
+    opacity: 1,
     position: 'absolute',
     width: 60,
   },
   text: {
     color: '#000',
+    textAlign: 'center',
   },
   trigger: {
     width: 0,
@@ -122,14 +137,13 @@ const styles = StyleSheet.create({
 
 const optionsStyles = {
   optionsContainer: {
-    backgroundColor: 'rgba(0, 255, 0, 0.5)',
+    backgroundColor: color.primary,
     padding: 1,
-    borderColor: 'rgb(0, 255, 0)',
+    borderColor: color.outline,
     borderStyle: 'dotted',
     borderWidth: 1,
   },
   optionWrapper: {
-    // backgroundColor: 'rgba(255, 0, 0, 0.5)',
     margin: 3,
   },
   optionText: {

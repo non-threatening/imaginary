@@ -4,9 +4,9 @@ import {Pressable, StyleSheet, Text, View} from 'react-native';
 import {useSpawnArray} from './spawnContext';
 
 export const AddSpawn = props => {
-  const [{}, dispatch] = useSpawnArray();
+  const [{}, dispatchSpawn] = useSpawnArray();
   const add = () => {
-    dispatch({
+    dispatchSpawn({
       type: 'NEW_SPAWN',
       name: props.name,
     });
@@ -27,9 +27,9 @@ export const AddSpawn = props => {
 };
 
 export const RemoveSpawn = props => {
-  const [{}, dispatch] = useSpawnArray();
+  const [{}, dispatchSpawn] = useSpawnArray();
   const remove = () => {
-    dispatch({
+    dispatchSpawn({
       type: 'REMOVE_SINGLE_SPAWN',
       payload: props.spawn,
     });
@@ -50,9 +50,9 @@ export const RemoveSpawn = props => {
 };
 
 export const ClearSpawns = props => {
-  const [{}, dispatch] = useSpawnArray();
+  const [{}, dispatchSpawn] = useSpawnArray();
   const removeKind = () => {
-    dispatch({
+    dispatchSpawn({
       type: 'REMOVE_NAME',
       name: props.name,
     });
@@ -73,9 +73,9 @@ export const ClearSpawns = props => {
 };
 
 export const RemoveAll = props => {
-  const [{}, dispatch] = useSpawnArray();
+  const [{}, dispatchSpawn] = useSpawnArray();
   const removeAll = () => {
-    dispatch({
+    dispatchSpawn({
       type: 'KILL_ALL_SPAWN',
     });
   };

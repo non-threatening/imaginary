@@ -3,7 +3,7 @@ import {useSpawnArray} from './spawnContext';
 
 export const SpawnController = props => {
   const starting = props.startCount;
-  const [{spawnArray}, dispatch] = useSpawnArray();
+  const [{spawnArray}, dispatchSpawn] = useSpawnArray();
   const [knobs, setKnobs] = useState([]);
 
   let reverseArray = knobs.reverse();
@@ -40,7 +40,7 @@ export const SpawnController = props => {
   }, [spawnArray]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const add = name => {
-    dispatch({type: 'NEW_SPAWN', name: name});
+    dispatchSpawn({type: 'NEW_SPAWN', name: name});
   };
 
   // StartCount on load
