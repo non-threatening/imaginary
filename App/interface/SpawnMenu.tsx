@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {Modal, Pressable, StyleSheet, Text, View} from 'react-native';
+
 import {AddSpawn, ClearSpawns, RemoveAll} from '../rn-spawn-component';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {postMessage, Sweep} from '../tone';
-
-import _style, {color} from '../style';
+import _style, {color, Picker} from '../style';
 
 export function SpawnMenu() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -80,6 +80,9 @@ export function SpawnMenu() {
           >
             <Text style={_style.textStyle}>sweep</Text>
           </Pressable>
+          <View style={{height: 200, width: 200}}>
+            <Picker />
+          </View>
         </View>
       </Modal>
       <Pressable

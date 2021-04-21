@@ -1,9 +1,23 @@
+/* eslint-disable react-native/no-inline-styles */
+import React from 'react';
 import {Dimensions, StatusBar, StyleSheet} from 'react-native';
+import {TriangleColorPicker} from 'react-native-color-picker';
+import hexRgb from 'hex-rgb';
+
+import {storeData} from './interface/storage/storeData';
 
 const h = Dimensions.get('window').height;
 const statusHeight = StatusBar.currentHeight;
 export const height = h - statusHeight;
 export const width = Dimensions.get('window').width;
+
+export const Picker = () => (
+  <TriangleColorPicker
+    onColorSelected={color => storeData('@rgb', hexRgb(color))}
+    defaultColor="rgba(0, 255, 255, 1)"
+    style={{flex: 1}}
+  />
+);
 
 const baseRed = 0;
 const baseGreen = 255;
