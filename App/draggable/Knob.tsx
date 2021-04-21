@@ -13,7 +13,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {images} from './img';
 import {color} from '../style';
-import {soloPause, soloPitchVolume} from '../tone';
+import {soloDispose, soloPause, soloPitchVolume} from '../tone';
 import _style from '../style';
 
 const Knob = props => {
@@ -44,7 +44,6 @@ const Knob = props => {
           source={playing ? images.sineFff : images.sinePaused}
           style={styles.image}
         />
-        <P>{[name, ': ', spawnNum.toString()]}</P>
         <Menu
           name={spawnNum.toString()}
           onBackdropPress={() => setOpened(!opened)}
@@ -66,10 +65,11 @@ const Knob = props => {
             </MenuOption>
 
             <MenuOption onSelect={() => removeKind(spawnNum)}>
-              <Button text=" Remove" icon="close-box-outline" />
+              <Button text=" Remove" icon="trash-can-outline" />
             </MenuOption>
           </MenuOptions>
         </Menu>
+        <P>{[name, ': ', spawnNum.toString()]}</P>
         <P>{xPos.toFixed(3).toString()}</P>
         <P>{yPos.toFixed(3).toString()}</P>
       </Pressable>
@@ -77,8 +77,8 @@ const Knob = props => {
   );
 
   function tap() {
-    setPlaying(!playing);
     soloPause(spawnNum, !playing);
+    setPlaying(!playing);
   }
 
   function long() {
@@ -86,6 +86,7 @@ const Knob = props => {
   }
 
   function removeKind() {
+    soloDispose(spawnNum);
     dispatchSpawn({type: 'REMOVE_SINGLE_SPAWN', payload: spawnNum});
   }
 }; // Knob

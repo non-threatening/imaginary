@@ -5,14 +5,18 @@ const statusHeight = StatusBar.currentHeight;
 export const height = h - statusHeight;
 export const width = Dimensions.get('window').width;
 
+const baseRed = 0;
+const baseGreen = 255;
+const baseBlue = 255;
+
 export const color = {
-  primary: 'rgba(0, 255, 0, 0.2)',
+  primary: `rgba(${baseRed}, ${baseGreen}, ${baseBlue}, 0.2)`,
   secondary: 'rgba(69, 0, 0, 0.5)',
-  outline: 'rgba(0, 255, 0, 0.75)',
+  outline: `rgba(${baseRed}, ${baseGreen}, ${baseBlue}, 0.75)`,
 
   darkBlue: '#05004c',
   pink: '#d8bfd8',
-  ripple: 'rgba(0, 255, 0, 0.2)',
+  ripple: `rgba(${baseRed}, ${baseGreen}, ${baseBlue}, 0.2)`,
 };
 
 export default StyleSheet.create({
