@@ -19,6 +19,7 @@ export const SettingsReducer = (state, action) => {
 
 export const SettingsContext = createContext();
 
+// eslint-disable-next-line no-shadow
 export const SettingsProvider = ({SettingsReducer, children}) => (
   <SettingsContext.Provider
     value={useReducer(SettingsReducer, initialSettings)}

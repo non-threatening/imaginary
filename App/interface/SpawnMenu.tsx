@@ -5,7 +5,7 @@ import {AddSpawn, ClearSpawns, RemoveAll} from '../rn-spawn-component';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {postMessage, Sweep} from '../tone';
 import _style, {color, Picker} from '../style';
-import {useSettings} from '../interface/storage/useSettings';
+import {useSettings} from './storage/useSettings';
 
 export function SpawnMenu() {
   const [{prime}] = useSettings();
@@ -32,20 +32,30 @@ export function SpawnMenu() {
           <View style={styles.row}>
             <AddSpawn
               android_ripple={{
-                color: color.ripple,
+                color: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.2)`,
               }}
               label="Spawn Component"
               name="sine"
-              style={[_style.button]}
+              style={[
+                _style.button,
+                {
+                  borderColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.75)`,
+                },
+              ]}
               textStyle={_style.textStyle}
             />
             <ClearSpawns
               android_ripple={{
-                color: color.ripple,
+                color: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.2)`,
               }}
               label="Clear Spawns"
               name="sine"
-              style={[_style.button]}
+              style={[
+                _style.button,
+                {
+                  borderColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.75)`,
+                },
+              ]}
               textStyle={_style.textStyle}
             />
           </View>
@@ -53,39 +63,63 @@ export function SpawnMenu() {
           <View style={styles.row}>
             <RemoveAll
               prepend={
-                <Icon name="bell-outline" size={18} color={color.outline} />
+                <Icon
+                  name="bell-outline"
+                  size={18}
+                  color={`rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.75)`}
+                />
               }
               label=" Remove"
               android_ripple={{
-                color: color.ripple,
+                color: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.2)`,
               }}
-              style={[_style.button]}
+              style={[
+                _style.button,
+                {
+                  borderColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.75)`,
+                },
+              ]}
               textStyle={_style.textStyle}
             />
           </View>
           <Pressable
             android_ripple={{
-              color: color.ripple,
+              color: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.2)`,
             }}
-            style={[_style.button]}
+            style={[
+              _style.button,
+              {
+                borderColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.75)`,
+              },
+            ]}
             onPress={() => setModalVisible(!modalVisible)}
           >
             <Text style={_style.textStyle}>Hide Modal</Text>
           </Pressable>
           <Pressable
             android_ripple={{
-              color: color.ripple,
+              color: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.2)`,
             }}
-            style={[_style.button]}
+            style={[
+              _style.button,
+              {
+                borderColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.75)`,
+              },
+            ]}
             onPress={() => postMessage('Webview connected')}
           >
             <Text style={_style.textStyle}>postMessage</Text>
           </Pressable>
           <Pressable
             android_ripple={{
-              color: color.ripple,
+              color: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.2)`,
             }}
-            style={[_style.button]}
+            style={[
+              _style.button,
+              {
+                borderColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.75)`,
+              },
+            ]}
             onPress={() => Sweep()}
           >
             <Text style={_style.textStyle}>sweep</Text>
@@ -97,9 +131,14 @@ export function SpawnMenu() {
       </Modal>
       <Pressable
         android_ripple={{
-          color: color.ripple,
+          color: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.2)`,
         }}
-        style={[_style.button]}
+        style={[
+          _style.button,
+          {
+            borderColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.75)`,
+          },
+        ]}
         onPress={() => setModalVisible(true)}
       >
         <Text style={_style.textStyle}>Show Modal</Text>

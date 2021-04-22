@@ -15,12 +15,14 @@ import {images} from './img';
 import {color} from '../style';
 import {soloDispose, soloPause, soloPitchVolume} from '../tone';
 import _style from '../style';
+import {useSettings} from '../interface/storage/useSettings';
 
 const Knob = props => {
   const [{}, dispatchSpawn] = useSpawnArray();
   const {name, spawnNum, xPos, yPos = 400} = props;
   const [playing, setPlaying] = useState(false);
   const [opened, setOpened] = useState(false);
+  const [{prime}] = useSettings();
 
   useEffect(() => {
     soloPitchVolume(spawnNum, xPos * 50 - 50, yPos * 1000, playing);
@@ -29,9 +31,14 @@ const Knob = props => {
   return (
     <>
       <Pressable
-        style={styles.box}
+        style={[
+          styles.box,
+          {
+            backgroundColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.75)`,
+          },
+        ]}
         android_ripple={{
-          color: color.ripple,
+          color: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.2)`,
         }}
         onPress={() => {
           tap();
@@ -49,17 +56,27 @@ const Knob = props => {
           onBackdropPress={() => setOpened(!opened)}
           opened={opened}
           renderer={Popover}
-          rendererProps={{anchorStyle: styles.anchorStyle}}
+          rendererProps={{
+            anchorStyle: {
+              backgroundColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.2)`,
+            },
+          }}
           style={styles.menu}
         >
           <MenuTrigger style={styles.trigger} />
-          <MenuOptions customStyles={optionsStyles}>
+          <MenuOptions
+            customStyles={optionsStyles}
+            style={{
+              backgroundColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.2)`,
+              // borderColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.75)`,
+            }}
+          >
             <MenuOption onSelect={() => setOpened(!opened)}>
               <Text>
                 <Icon
                   name={'close-box-outline'}
                   size={32}
-                  color={color.outline}
+                  color={`rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.75)`}
                 />
               </Text>
             </MenuOption>
@@ -113,13 +130,14 @@ const styles = StyleSheet.create({
   box: {
     alignSelf: 'center',
     backgroundColor: color.outline,
-    borderRadius: 5,
+    borderRadius: 4,
     height: 60,
     padding: 2,
     width: 60,
     zIndex: 200,
   },
   image: {
+    borderRadius: 4,
     height: 60,
     opacity: 1,
     position: 'absolute',
@@ -140,9 +158,9 @@ const optionsStyles = {
   optionsContainer: {
     backgroundColor: color.primary,
     padding: 1,
-    borderColor: color.outline,
-    borderStyle: 'dotted',
-    borderWidth: 1,
+    // borderColor: color.outline,
+    // borderStyle: 'dotted',
+    // borderWidth: 1,
   },
   optionWrapper: {
     margin: 3,

@@ -7,8 +7,10 @@ import {SpawnMenu} from './SpawnMenu';
 import {KnobWrap} from '../draggable';
 import {AddSpawn, SpawnProvider, SpawnController} from '../rn-spawn-component';
 import _style, {color, height, width} from '../style';
+import {useSettings} from './storage/useSettings';
 
 export function Interface() {
+  const [{prime}] = useSettings();
   return (
     <>
       <SpawnProvider>
@@ -17,19 +19,36 @@ export function Interface() {
         </View>
 
         <View style={{backgroundColor: '#000'}}>
-          <View style={styles.bottom}>
+          <View
+            style={[
+              styles.bottom,
+              {
+                backgroundColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.2)`,
+                borderColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.75)`,
+              },
+            ]}
+          >
             <SpawnMenu />
             <AddSpawn
               android_ripple={{
-                color: color.ripple,
+                color: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.2)`,
               }}
               label="Spawn Component"
               name="sine"
-              style={[_style.button]}
+              style={[
+                _style.button,
+                {
+                  borderColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.75)`,
+                },
+              ]}
               textStyle={_style.textStyle}
             />
             <Text>
-              <Icon name="baseball-bat" size={30} color={color.outline} />
+              <Icon
+                name="baseball-bat"
+                size={30}
+                color={`rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.75)`}
+              />
             </Text>
           </View>
         </View>
