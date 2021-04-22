@@ -1,7 +1,9 @@
 import {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useSettings} from './useSettings';
 
 export function LoadStorage() {
+  const [{}, dispatch] = useSettings();
   const [rgb, setRgb] = useState(null);
   useEffect(() => {
     async function getData() {
@@ -16,12 +18,13 @@ export function LoadStorage() {
   }, []);
 
   useEffect(() => {
-    // setup a dispatch here ??
     if (rgb) {
-      const {red, green, blue} = JSON.parse(rgb);
-      console.log(red, green, blue);
+      dispatch({
+        type: 'RGB',
+        prime: JSON.parse(rgb),
+      });
     }
-  }, [rgb]);
+  }, [rgb]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return null;
 }

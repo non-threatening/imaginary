@@ -5,8 +5,10 @@ import {AddSpawn, ClearSpawns, RemoveAll} from '../rn-spawn-component';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {postMessage, Sweep} from '../tone';
 import _style, {color, Picker} from '../style';
+import {useSettings} from '../interface/storage/useSettings';
 
 export function SpawnMenu() {
+  const [{prime}] = useSettings();
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <View>
@@ -18,7 +20,15 @@ export function SpawnMenu() {
           setModalVisible(!modalVisible);
         }}
       >
-        <View style={styles.modalView}>
+        <View
+          style={[
+            styles.modalView,
+            {
+              backgroundColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.2)`,
+              borderColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.75)`,
+            },
+          ]}
+        >
           <View style={styles.row}>
             <AddSpawn
               android_ripple={{
