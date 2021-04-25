@@ -1,9 +1,9 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import {Modal, StyleSheet, View} from 'react-native';
 
 import {Button} from './Button';
-import {AddSpawn, ClearSpawns, RemoveAll} from '../rn-spawn-component';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {AddSpawn} from '../rn-spawn-component';
 import {postMessage, Sweep} from '../tone';
 import _style, {color, Picker} from '../style';
 import {useSettings} from './storage/useSettings';
@@ -11,7 +11,6 @@ import {useSettings} from './storage/useSettings';
 export function SpawnMenu() {
   const [{prime}] = useSettings();
   const primeColor = [prime.red, prime.green, prime.blue];
-
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <View>
@@ -32,6 +31,13 @@ export function SpawnMenu() {
             },
           ]}
         >
+          <Button
+            onPress={() => setModalVisible(!modalVisible)}
+            size={36}
+            icon="close-box-outline"
+            style={{left: 5, padding: 2, position: 'absolute', top: 5}}
+          />
+
           <View style={styles.row}>
             <AddSpawn
               android_ripple={{
@@ -47,58 +53,16 @@ export function SpawnMenu() {
               ]}
               textStyle={_style.textStyle}
             />
-            <ClearSpawns
-              android_ripple={{
-                color: `rgba(${primeColor}, 0.2)`,
-              }}
-              label="Clear Spawns"
-              name="sine"
-              style={[
-                _style.button,
-                {
-                  borderColor: `rgba(${primeColor}, 0.75)`,
-                },
-              ]}
-              textStyle={_style.textStyle}
-            />
           </View>
 
           <View style={styles.row}>
-            <RemoveAll
-              prepend={
-                <Icon
-                  name="bell-outline"
-                  size={18}
-                  color={`rgba(${primeColor}, 0.75)`}
-                />
-              }
-              label=" Remove"
-              android_ripple={{
-                color: `rgba(${primeColor}, 0.2)`,
-              }}
-              style={[
-                _style.button,
-                {
-                  borderColor: `rgba(${primeColor}, 0.75)`,
-                },
-              ]}
-              textStyle={_style.textStyle}
+            <Button
+              onPress={() => postMessage('Webview connected')}
+              text=" postMessage"
             />
+
+            <Button onPress={() => Sweep()} text=" sweep" icon="broom" />
           </View>
-
-          <Button
-            onPress={() => setModalVisible(!modalVisible)}
-            text=" Hide Modal"
-            // icon="broom"
-          />
-
-          <Button
-            onPress={() => postMessage('Webview connected')}
-            text=" postMessage"
-            // icon="broom"
-          />
-
-          <Button onPress={() => Sweep()} text=" sweep" icon="broom" />
 
           <View style={{height: 200, width: 200}}>
             <Picker />

@@ -1,7 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {StyleSheet, View} from 'react-native';
 
 import {Button} from './Button';
 import {SpawnMenu} from './SpawnMenu';
@@ -28,7 +27,6 @@ export function Bottom() {
             },
           ]}
         >
-          <SpawnMenu />
           <AddSpawn
             android_ripple={{
               color: `rgba(${primeColor}, 0.2)`,
@@ -43,19 +41,10 @@ export function Bottom() {
             ]}
             textStyle={_style.textStyle}
           />
-          <Text>
-            <Icon
-              name="baseball-bat"
-              size={30}
-              color={`rgba(${primeColor}, 0.75)`}
-            />
-          </Text>
 
-          <Button
-            onPress={() => removeAll()}
-            text=" Remove"
-            icon="trash-can-outline"
-          />
+          <Button onPress={() => removeAll()} text=" Refresh" icon="broom" />
+
+          <SpawnMenu />
         </View>
       </View>
     </>
@@ -71,7 +60,8 @@ const styles = StyleSheet.create({
   bottom: {
     alignItems: 'center',
     borderStyle: 'dotted',
-    borderTopWidth: 1,
+    borderRadius: 1,
+    borderWidth: 1,
     flexDirection: 'row',
     height: 120,
     justifyContent: 'center',

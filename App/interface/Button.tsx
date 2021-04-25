@@ -1,8 +1,7 @@
 import React from 'react';
-import {Pressable, Text} from 'react-native';
+import {Pressable, StyleSheet, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import _style from '../style';
 import {useSettings} from './storage/useSettings';
 
 export function Button(props) {
@@ -10,21 +9,45 @@ export function Button(props) {
   const primeColor = [prime.red, prime.green, prime.blue];
   return (
     <Pressable
-      onPress={props.onPress}
       android_ripple={{
         color: `rgba(${primeColor}, 0.2)`,
       }}
+      onPress={props.onPress}
       style={[
-        _style.button,
+        styles.button,
+        props.style,
         {
           borderColor: `rgba(${primeColor}, 0.75)`,
         },
       ]}
     >
       <Text>
-        <Icon name={props.icon} size={26} color={`rgba(${primeColor}, 0.75)`} />
+        <Icon
+          name={props.icon ? props.icon : null}
+          size={props.size ? props.size : 20}
+          color={`rgba(${primeColor}, 0.75)`}
+        />
       </Text>
-      <Text style={_style.textStyle}>{props.text}</Text>
+      <Text style={styles.textStyle}>{props.text}</Text>
     </Pressable>
   );
 }
+
+const styles = StyleSheet.create({
+  button: {
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    borderStyle: 'dotted',
+    borderWidth: 1,
+    borderRadius: 4,
+    display: 'flex',
+    elevation: 2,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    margin: 5,
+    padding: 8,
+  },
+  textStyle: {
+    color: 'rgba(255, 255, 255, 0.75)',
+  },
+});
