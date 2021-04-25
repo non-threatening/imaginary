@@ -14,6 +14,7 @@ export const width = Dimensions.get('window').width;
 
 export function Picker() {
   const [{prime}, dispatch] = useSettings();
+  const primeColor = [prime.red, prime.green, prime.blue];
   return (
     <TriangleColorPicker
       onColorChange={color => {
@@ -23,25 +24,17 @@ export function Picker() {
           prime: hexRgb(fromHsv(color)),
         });
       }}
-      defaultColor={`rgba(${prime.red}, ${prime.green}, ${prime.blue}, 1)`}
+      defaultColor={`rgba(${primeColor}, 1)`}
       hideControls
       style={{flex: 1}}
     />
   );
 }
 
-const baseRed = 0;
-const baseGreen = 255;
-const baseBlue = 255;
-
 export const color = {
-  primary: `rgba(${baseRed}, ${baseGreen}, ${baseBlue}, 0.2)`,
-  secondary: 'rgba(69, 0, 0, 0.5)',
-  outline: `rgba(${baseRed}, ${baseGreen}, ${baseBlue}, 0.75)`,
-
+  secondary: 'rgba(0, 0, 0, 0.5)',
   darkBlue: '#05004c',
   pink: '#d8bfd8',
-  ripple: `rgba(${baseRed}, ${baseGreen}, ${baseBlue}, 0.2)`,
 };
 
 export default StyleSheet.create({

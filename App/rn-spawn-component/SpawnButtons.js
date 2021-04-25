@@ -123,7 +123,8 @@ function Button({
             : 'rgba(255, 255, 255, 0.2)',
         },
         style,
-      ]}>
+      ]}
+    >
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <View>{prepend ? prepend : null}</View>
         <Text style={[textStyle, {}]}>{label}</Text>

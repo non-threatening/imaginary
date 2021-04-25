@@ -23,6 +23,7 @@ const Knob = props => {
   const [playing, setPlaying] = useState(false);
   const [opened, setOpened] = useState(false);
   const [{prime}] = useSettings();
+  const primeColor = [prime.red, prime.green, prime.blue];
 
   useEffect(() => {
     soloPitchVolume(spawnNum, xPos * 50 - 50, yPos * 1000, playing);
@@ -34,11 +35,11 @@ const Knob = props => {
         style={[
           styles.box,
           {
-            backgroundColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.75)`,
+            backgroundColor: `rgba(${primeColor}, 0.75)`,
           },
         ]}
         android_ripple={{
-          color: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.2)`,
+          color: `rgba(${primeColor}, 0.2)`,
         }}
         onPress={() => {
           tap();
@@ -58,7 +59,7 @@ const Knob = props => {
           renderer={Popover}
           rendererProps={{
             anchorStyle: {
-              backgroundColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.2)`,
+              backgroundColor: `rgba(${primeColor}, 0.2)`,
             },
           }}
           style={styles.menu}
@@ -67,8 +68,8 @@ const Knob = props => {
           <MenuOptions
             customStyles={optionsStyles}
             style={{
-              backgroundColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.2)`,
-              // borderColor: `rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.75)`,
+              backgroundColor: `rgba(${primeColor}, 0.2)`,
+              // borderColor: `rgba(${primeColor}, 0.75)`,
             }}
           >
             <MenuOption onSelect={() => setOpened(!opened)}>
@@ -76,13 +77,17 @@ const Knob = props => {
                 <Icon
                   name={'close-box-outline'}
                   size={32}
-                  color={`rgba(${prime.red}, ${prime.green}, ${prime.blue}, 0.75)`}
+                  color={`rgba(${primeColor}, 0.75)`}
                 />
               </Text>
             </MenuOption>
 
             <MenuOption onSelect={() => removeKind(spawnNum)}>
-              <Button text=" Remove" icon="trash-can-outline" />
+              <Button
+                color={`rgba(${primeColor}, 0.75)`}
+                text=" Remove"
+                icon="trash-can-outline"
+              />
             </MenuOption>
           </MenuOptions>
         </Menu>
@@ -116,7 +121,7 @@ function Button(props) {
   return (
     <View style={_style.button}>
       <Text>
-        <Icon name={props.icon} size={26} color={color.outline} />
+        <Icon name={props.icon} size={26} color={props.color} />
       </Text>
       <Text style={_style.textStyle}>{props.text}</Text>
     </View>
@@ -124,22 +129,17 @@ function Button(props) {
 }
 
 const styles = StyleSheet.create({
-  anchorStyle: {
-    backgroundColor: color.outline,
-  },
   box: {
     alignSelf: 'center',
-    backgroundColor: color.outline,
-    borderRadius: 4,
+    borderRadius: 5,
     height: 60,
+    overflow: 'hidden',
     padding: 2,
     width: 60,
     zIndex: 200,
   },
   image: {
-    borderRadius: 4,
     height: 60,
-    opacity: 1,
     position: 'absolute',
     width: 60,
   },
