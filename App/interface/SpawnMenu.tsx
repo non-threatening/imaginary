@@ -7,6 +7,7 @@ import {AddSpawn} from '../rn-spawn-component';
 import {postMessage, Sweep} from '../tone';
 import _style, {color, Picker} from '../style';
 import {useSettings} from './storage/useSettings';
+import {RangeSlider} from './Slider';
 
 export function SpawnMenu() {
   const [{prime}] = useSettings();
@@ -62,6 +63,10 @@ export function SpawnMenu() {
             />
 
             <Button onPress={() => Sweep()} text=" sweep" icon="broom" />
+          </View>
+
+          <View style={{height: 50, width: 200}}>
+            <RangeSlider />
           </View>
 
           <View style={{height: 200, width: 200}}>
