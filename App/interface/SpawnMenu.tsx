@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import {Modal, Pressable, StyleSheet, Text, View} from 'react-native';
+import {Modal, StyleSheet, View} from 'react-native';
 
+import {Button} from './Button';
 import {AddSpawn, ClearSpawns, RemoveAll} from '../rn-spawn-component';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {postMessage, Sweep} from '../tone';
@@ -84,67 +85,31 @@ export function SpawnMenu() {
               textStyle={_style.textStyle}
             />
           </View>
-          <Pressable
-            android_ripple={{
-              color: `rgba(${primeColor}, 0.2)`,
-            }}
-            style={[
-              _style.button,
-              {
-                borderColor: `rgba(${primeColor}, 0.75)`,
-              },
-            ]}
+
+          <Button
             onPress={() => setModalVisible(!modalVisible)}
-          >
-            <Text style={_style.textStyle}>Hide Modal</Text>
-          </Pressable>
-          <Pressable
-            android_ripple={{
-              color: `rgba(${primeColor}, 0.2)`,
-            }}
-            style={[
-              _style.button,
-              {
-                borderColor: `rgba(${primeColor}, 0.75)`,
-              },
-            ]}
+            text=" Hide Modal"
+            // icon="broom"
+          />
+
+          <Button
             onPress={() => postMessage('Webview connected')}
-          >
-            <Text style={_style.textStyle}>postMessage</Text>
-          </Pressable>
-          <Pressable
-            android_ripple={{
-              color: `rgba(${primeColor}, 0.2)`,
-            }}
-            style={[
-              _style.button,
-              {
-                borderColor: `rgba(${primeColor}, 0.75)`,
-              },
-            ]}
-            onPress={() => Sweep()}
-          >
-            <Text style={_style.textStyle}>sweep</Text>
-          </Pressable>
+            text=" postMessage"
+            // icon="broom"
+          />
+
+          <Button onPress={() => Sweep()} text=" sweep" icon="broom" />
+
           <View style={{height: 200, width: 200}}>
             <Picker />
           </View>
         </View>
       </Modal>
-      <Pressable
-        android_ripple={{
-          color: `rgba(${primeColor}, 0.2)`,
-        }}
-        style={[
-          _style.button,
-          {
-            borderColor: `rgba(${primeColor}, 0.75)`,
-          },
-        ]}
+      <Button
         onPress={() => setModalVisible(true)}
-      >
-        <Text style={_style.textStyle}>Show Modal</Text>
-      </Pressable>
+        text=" Settings"
+        icon="cog-outline"
+      />
     </View>
   );
 }

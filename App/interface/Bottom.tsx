@@ -3,12 +3,16 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import {Button} from './Button';
 import {SpawnMenu} from './SpawnMenu';
-import {AddSpawn, RemoveAll} from '../rn-spawn-component';
+import {AddSpawn} from '../rn-spawn-component';
 import _style from '../style';
 import {useSettings} from './storage/useSettings';
+import {masterDisposeAllOsc} from '../tone';
+import {useSpawnArray} from '../rn-spawn-component';
 
 export function Bottom() {
+  const [{}, dispatchSpawn] = useSpawnArray();
   const [{prime}] = useSettings();
   const primeColor = [prime.red, prime.green, prime.blue];
 
@@ -46,20 +50,21 @@ export function Bottom() {
               color={`rgba(${primeColor}, 0.75)`}
             />
           </Text>
-          <RemoveAll
-            label="Remove All"
-            style={[
-              _style.button,
-              {
-                borderColor: `rgba(${primeColor}, 0.75)`,
-              },
-            ]}
-            textStyle={_style.textStyle}
+
+          <Button
+            onPress={() => removeAll()}
+            text=" Remove"
+            icon="trash-can-outline"
           />
         </View>
       </View>
     </>
   );
+
+  function removeAll() {
+    masterDisposeAllOsc();
+    dispatchSpawn({type: 'KILL_ALL_SPAWN'});
+  }
 }
 
 const styles = StyleSheet.create({
