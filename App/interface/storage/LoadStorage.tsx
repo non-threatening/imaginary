@@ -4,12 +4,12 @@ import {useSettings} from './useSettings';
 
 export function LoadStorage() {
   const [{}, dispatch] = useSettings();
-  const [rgb, setRgb] = useState(null);
+  const [values, setValues] = useState(null);
   useEffect(() => {
     async function getData() {
       try {
-        const jsonValue = await AsyncStorage.getItem('@rgb');
-        setRgb(jsonValue != null ? jsonValue : null);
+        const things = await AsyncStorage.multiGet(['@rgb', '@range']);
+        setValues(things);
       } catch (e) {
         console.warn(e);
       }
@@ -18,13 +18,17 @@ export function LoadStorage() {
   }, []);
 
   useEffect(() => {
-    if (rgb) {
+    if (values) {
       dispatch({
         type: 'RGB',
-        prime: JSON.parse(rgb),
+        prime: JSON.parse(values[0][1]),
+      });
+      dispatch({
+        type: 'RANGE',
+        range: JSON.parse(values[1][1]),
       });
     }
-  }, [rgb]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [values]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return null;
 }

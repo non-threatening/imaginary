@@ -2,15 +2,21 @@ import React, {createContext, useContext, useReducer} from 'react';
 
 export const initialSettings = {
   prime: {red: 0, green: 255, blue: 255, alpha: 1},
+  range: [100, 700],
 };
 
 export const SettingsReducer = (state, action) => {
-  console.log(action.prime);
+  console.log(`useSettings: ${JSON.stringify(action)}`);
   switch (action.type) {
     case 'RGB':
       return {
         ...state,
         prime: action.prime,
+      };
+    case 'RANGE':
+      return {
+        ...state,
+        range: action.range,
       };
     default:
       return state;
