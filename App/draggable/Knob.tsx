@@ -12,9 +12,8 @@ import {useSpawnArray} from '../rn-spawn-component';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {images} from './img';
-import {color} from '../style';
+import _style, {color} from '../interface/style';
 import {soloDispose, soloPause, soloPitchVolume} from '../tone';
-import _style from '../style';
 import {useSettings} from '../interface/storage/useSettings';
 
 const Knob = props => {

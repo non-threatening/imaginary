@@ -4,8 +4,8 @@ import {Dimensions, StatusBar, StyleSheet} from 'react-native';
 import {fromHsv, TriangleColorPicker} from 'react-native-color-picker';
 import hexRgb from 'hex-rgb';
 
-import {storeData} from './interface/storage/storeData';
-import {useSettings} from './interface/storage/useSettings';
+import {storeData} from './storage/storeData';
+import {useSettings} from './storage/useSettings';
 
 const h = Dimensions.get('window').height;
 const statusHeight = StatusBar.currentHeight;

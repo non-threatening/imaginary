@@ -8,7 +8,7 @@ import {
 } from 'react-native-gesture-handler';
 
 import Knob from './Knob';
-import {height, width} from '../style';
+import {height, width} from '../interface/style';
 
 import {USE_NATIVE_DRIVER} from './config';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {DraggableBox} from './Draggable';
-import {height, width} from '../style';
+import {height, width} from '../interface/style';
 
 export const KnobWrap = props => {
   const name = props.name;

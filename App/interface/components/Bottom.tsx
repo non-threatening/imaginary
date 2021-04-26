@@ -2,13 +2,12 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
+import {AddSpawn, useSpawnArray} from '../../rn-spawn-component';
+import {masterDisposeAllOsc} from '../../tone';
+import _style from '../style';
+import {useSettings} from '../storage/useSettings';
 import {Button} from './Button';
 import {SpawnMenu} from './SpawnMenu';
-import {AddSpawn} from '../rn-spawn-component';
-import _style from '../style';
-import {useSettings} from './storage/useSettings';
-import {masterDisposeAllOsc} from '../tone';
-import {useSpawnArray} from '../rn-spawn-component';
 
 export function Bottom() {
   const [{}, dispatchSpawn] = useSpawnArray();

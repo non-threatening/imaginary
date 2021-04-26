@@ -2,11 +2,11 @@
 import React, {useState} from 'react';
 import {Modal, StyleSheet, View} from 'react-native';
 
-import {Button} from './Button';
-import {AddSpawn} from '../rn-spawn-component';
-import {postMessage, Sweep} from '../tone';
+import {AddSpawn} from '../../rn-spawn-component';
+import {useSettings} from '../storage/useSettings';
+import {postMessage, Sweep} from '../../tone';
 import _style, {color, Picker} from '../style';
-import {useSettings} from './storage/useSettings';
+import {Button} from './Button';
 import {RangeSlider} from './Slider';
 
 export function SpawnMenu() {
