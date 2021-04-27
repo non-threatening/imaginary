@@ -65,7 +65,7 @@ export function SpawnMenu() {
             <Button onPress={() => Sweep()} text=" sweep" icon="broom" />
           </View>
 
-          <View style={{height: 50, width: 200}}>
+          <View>
             <RangeSlider />
           </View>
 
