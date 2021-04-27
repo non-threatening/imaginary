@@ -3,8 +3,8 @@ import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
-import {storeData} from '../storage/storeData';
-import {useSettings} from '../storage/useSettings';
+import {storeData} from '../../storage/storeData';
+import {useSettings} from '../../storage/useSettings';
 import Label from './SliderLabel';
 
 export function RangeSlider() {
