@@ -12,7 +12,7 @@ import {useSpawnArray} from '../rn-spawn-component';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {images} from './img';
-import _style, {color} from '../interface/style';
+import _style, {color, DeviceHeight} from '../interface/style';
 import {soloDispose, soloPause, soloPitchVolume} from '../tone';
 import {useSettings} from '../interface/storage/useSettings';
 
@@ -21,12 +21,18 @@ const Knob = props => {
   const {name, spawnNum, xPos, yPos = 400} = props;
   const [playing, setPlaying] = useState(false);
   const [opened, setOpened] = useState(false);
-  const [{prime}] = useSettings();
+  const [{prime, range}] = useSettings();
   const primeColor = [prime.red, prime.green, prime.blue];
 
+  let yFreq =
+    (1 + ((yPos + (DeviceHeight - 120) * 0.5) * -1) / (DeviceHeight - 120)) *
+    range[1];
+
+  let xVol = xPos;
+
   useEffect(() => {
-    soloPitchVolume(spawnNum, xPos * 50 - 50, yPos * 1000, playing);
-  }, [spawnNum, xPos, yPos, playing]);
+    soloPitchVolume(spawnNum, xVol, yFreq, playing);
+  }, [spawnNum, xVol, playing, range, yFreq]);
 
   return (
     <>
@@ -68,7 +74,6 @@ const Knob = props => {
             customStyles={optionsStyles}
             style={{
               backgroundColor: `rgba(${primeColor}, 0.2)`,
-              // borderColor: `rgba(${primeColor}, 0.75)`,
             }}
           >
             <MenuOption onSelect={() => setOpened(!opened)}>
@@ -91,8 +96,8 @@ const Knob = props => {
           </MenuOptions>
         </Menu>
         <P>{[name, ': ', spawnNum.toString()]}</P>
-        <P>{xPos.toFixed(3).toString()}</P>
-        <P>{yPos.toFixed(3).toString()}</P>
+        <P>{xVol.toFixed(2).toString()}</P>
+        <P>{yFreq.toFixed(0).toString()}</P>
       </Pressable>
     </>
   );
@@ -157,9 +162,6 @@ const optionsStyles = {
   optionsContainer: {
     backgroundColor: color.primary,
     padding: 1,
-    // borderColor: color.outline,
-    // borderStyle: 'dotted',
-    // borderWidth: 1,
   },
   optionWrapper: {
     margin: 3,

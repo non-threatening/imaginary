@@ -9,9 +9,9 @@ import {useSettings} from './storage/useSettings';
 
 const h = Dimensions.get('window').height;
 const statusHeight = StatusBar.currentHeight;
-export const WinHeight = h - statusHeight;
-export const WinWidth = Dimensions.get('window').width;
-console.log(WinWidth, WinHeight);
+export const DeviceHeight = h - statusHeight;
+export const DeviceWidth = Dimensions.get('window').width;
+console.log(DeviceWidth, DeviceHeight);
 
 export function Picker() {
   const [{prime}, dispatch] = useSettings();

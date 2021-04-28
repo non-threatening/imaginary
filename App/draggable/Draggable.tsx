@@ -8,7 +8,6 @@ import {
 } from 'react-native-gesture-handler';
 
 import Knob from './Knob';
-import {WinHeight, WinWidth} from '../interface/style';
 
 import {USE_NATIVE_DRIVER} from './config';
 
@@ -28,7 +27,7 @@ export class DraggableBox extends Component<DraggableBoxProps> {
     this.translateX = new Animated.Value(0);
     this.translateY = new Animated.Value(0);
     this.lastOffset = {x: 0, y: 0};
-    this.state = {xPos: 0.5, yPos: 0.4};
+    this.state = {xPos: 0, yPos: 0};
     this.onGestureEvent = Animated.event(
       [
         {
@@ -40,10 +39,10 @@ export class DraggableBox extends Component<DraggableBoxProps> {
       ],
       {useNativeDriver: USE_NATIVE_DRIVER},
       this.translateX.addListener(thing => {
-        this.setState({xPos: thing.value / WinWidth / 2 + 0.5});
+        this.setState({xPos: thing.value});
       }),
       this.translateY.addListener(thing => {
-        this.setState({yPos: thing.value / (WinHeight - 150) / 2 + 0.5});
+        this.setState({yPos: thing.value});
       }),
     );
   }

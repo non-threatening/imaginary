@@ -3,7 +3,7 @@ import {StyleSheet, View} from 'react-native';
 
 import {KnobWrap} from '../draggable';
 import {SpawnProvider, SpawnController} from '../rn-spawn-component';
-import {height, width} from './style';
+import {DeviceHeight, DeviceWidth} from './style';
 import {Bottom} from './components/Bottom';
 
 export function Interface() {
@@ -23,7 +23,7 @@ export function Interface() {
 const styles = StyleSheet.create({
   body: {
     backgroundColor: '#000',
-    height: height - 120,
-    width: width,
+    height: DeviceHeight - 120,
+    width: DeviceWidth,
   },
 });
