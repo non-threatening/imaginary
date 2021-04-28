@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {DraggableBox} from './Draggable';
-import {height, width} from '../interface/style';
+import {WinHeight, WinWidth} from '../interface/style';
 
 export const KnobWrap = props => {
   const name = props.name;
@@ -16,8 +16,8 @@ export const KnobWrap = props => {
 
 const styles = StyleSheet.create({
   box: {
-    left: width * 0.5 - 30,
+    left: WinWidth * 0.5 - 30,
     position: 'absolute',
-    top: height * 0.5 - 70,
+    top: WinHeight * 0.5 - 70,
   },
 });

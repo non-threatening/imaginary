@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, StyleSheet} from 'react-native';
 
-import _style, {color} from '../style';
+import _style, {color} from '../../style';
 
 const sliderRadius = 3;
 const width = 50;

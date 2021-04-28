@@ -8,7 +8,7 @@ import {
 } from 'react-native-gesture-handler';
 
 import Knob from './Knob';
-import {height, width} from '../interface/style';
+import {WinHeight, WinWidth} from '../interface/style';
 
 import {USE_NATIVE_DRIVER} from './config';
 
@@ -40,10 +40,10 @@ export class DraggableBox extends Component<DraggableBoxProps> {
       ],
       {useNativeDriver: USE_NATIVE_DRIVER},
       this.translateX.addListener(thing => {
-        this.setState({xPos: thing.value / width / 2 + 0.5});
+        this.setState({xPos: thing.value / WinWidth / 2 + 0.5});
       }),
       this.translateY.addListener(thing => {
-        this.setState({yPos: thing.value / height / 2 + 0.5});
+        this.setState({yPos: thing.value / (WinHeight - 150) / 2 + 0.5});
       }),
     );
   }
