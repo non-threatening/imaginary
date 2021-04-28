@@ -12,7 +12,7 @@ import {useSpawnArray} from '../rn-spawn-component';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {images} from './img';
-import _style, {color, DeviceHeight} from '../interface/style';
+import _style, {color, DeviceHeight, DeviceWidth} from '../interface/style';
 import {soloDispose, soloPause, soloPitchVolume} from '../tone';
 import {useSettings} from '../interface/storage/useSettings';
 
@@ -24,11 +24,12 @@ const Knob = props => {
   const [{prime, range}] = useSettings();
   const primeColor = [prime.red, prime.green, prime.blue];
 
+  // prettier-ignore
   let yFreq =
-    (1 + ((yPos + (DeviceHeight - 120) * 0.5) * -1) / (DeviceHeight - 120)) *
-    range[1];
+    ((1 + ((yPos + (DeviceHeight - 120) * 0.5) * -1) / (DeviceHeight - 120)) *
+    (range[1] - range[0])) + range[0];
 
-  let xVol = xPos;
+  let xVol = (1 + ((xPos + DeviceWidth * 0.5) / DeviceWidth) * -1) * -40;
 
   useEffect(() => {
     soloPitchVolume(spawnNum, xVol, yFreq, playing);
