@@ -7,7 +7,7 @@ import {useSettings} from '../storage/useSettings';
 import {postMessage, Sweep} from '../../tone';
 import _style, {color, Picker} from '../style';
 import {Button} from './Button';
-import {RangeSlider} from './Slider';
+import {RangeSlider} from './RangeSlider';
 
 export function SpawnMenu() {
   const [{prime}] = useSettings();
