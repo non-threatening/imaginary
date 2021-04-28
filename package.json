@@ -19,6 +19,7 @@
     "react-native-color-picker": "^0.6.0",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-popup-menu": "^0.15.10",
+    "react-native-svg": "^12.1.1",
     "react-native-vector-icons": "^8.1.0",
     "react-native-webview": "^11.4.0",
     "rn-spawn-component": "^0.0.11"

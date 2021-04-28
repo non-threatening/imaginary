@@ -5,12 +5,14 @@ import {KnobWrap} from '../draggable';
 import {SpawnProvider, SpawnController} from '../rn-spawn-component';
 import {DeviceHeight, DeviceWidth} from './style';
 import {Bottom} from './components/Bottom';
+import {BackgroundGrid} from './BackgroundGrid';
 
 export function Interface() {
   return (
     <>
       <SpawnProvider>
         <View style={styles.body}>
+          <BackgroundGrid />
           <SpawnController spawn={<KnobWrap />} name="sine" />
         </View>
 
