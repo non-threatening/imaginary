@@ -6,41 +6,42 @@ import Svg, {Line} from 'react-native-svg';
 import {useSettings} from './storage/useSettings';
 import {DeviceHeight, DeviceWidth} from './style';
 
+let json = require('../assets/notes.json');
+let items = json.notes;
+
 export function BackgroundGrid() {
   const [{prime}] = useSettings();
   const primeColor = [prime.red, prime.green, prime.blue];
 
-  let items = ['100', '200', '266', '300', '400', '500', '600', '666'];
-
   let lineList = items.map((item, index) => {
-    return (
+    return item.frequency > 400 && item.frequency < 666 ? (
       <Line
         key={index}
         stroke={`rgb(${primeColor})`}
         strokeWidth="1"
         strokeOpacity="0.3"
-        y1={item}
-        y2={item}
         x1="10"
         x2={DeviceWidth - 10}
+        y1={item.frequency}
+        y2={item.frequency}
       />
-    );
+    ) : null;
   });
 
   let textList = items.map((item, index) => {
-    return (
+    return item.frequency > 400 && item.frequency < 666 ? (
       <Text
         key={index}
         style={{
           color: `rgba(${primeColor}, 0.5)`,
-          position: 'absolute',
           left: 15,
-          top: JSON.parse(item),
+          position: 'absolute',
+          top: item.frequency,
         }}
       >
-        {item} hz
+        {item.note} - {item.frequency} hz
       </Text>
-    );
+    ) : null;
   });
 
   return (
