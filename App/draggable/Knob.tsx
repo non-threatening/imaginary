@@ -12,7 +12,7 @@ import {useSpawnArray} from '../rn-spawn-component';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {images} from './img';
-import _style, {color, DeviceHeight, DeviceWidth} from '../interface/style';
+import _style, {color, stageHeight, DeviceWidth} from '../interface/style';
 import {soloDispose, soloPause, soloPitchVolume} from '../tone';
 import {useSettings} from '../interface/storage/useSettings';
 
@@ -26,8 +26,7 @@ const Knob = props => {
 
   // prettier-ignore
   let yFreq =
-    ((1 + ((yPos + (DeviceHeight - 120) * 0.5) * -1) / (DeviceHeight - 120)) *
-    (range[1] - range[0])) + range[0];
+    ((1 + ((yPos + stageHeight * 0.5) * -1) / stageHeight) * (range[1] - range[0])) + range[0];
 
   let xVol = (1 + ((xPos + DeviceWidth * 0.5) / DeviceWidth) * -1) * -40;
 
