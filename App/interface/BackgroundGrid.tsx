@@ -28,9 +28,9 @@ export function BackgroundGrid() {
       <Line
         key={index}
         stroke={`rgb(${primeColor})`}
-        strokeWidth="1"
-        strokeOpacity="0.3"
-        x1="10"
+        strokeWidth={1}
+        strokeOpacity={0.3}
+        x1={10}
         x2={DeviceWidth - 10}
         y1={offSet(item.frequency)}
         y2={offSet(item.frequency)}

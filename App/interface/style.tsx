@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {Dimensions, StatusBar, StyleSheet} from 'react-native';
+import {Dimensions, /* StatusBar, */ StyleSheet} from 'react-native';
 import {fromHsv, TriangleColorPicker} from 'react-native-color-picker';
 import hexRgb from 'hex-rgb';
 
@@ -8,8 +8,8 @@ import {storeData} from './storage/storeData';
 import {useSettings} from './storage/useSettings';
 
 const h = Dimensions.get('window').height;
-const statusHeight = StatusBar.currentHeight;
-export const stageHeight = h - statusHeight - 120;
+// const statusHeight = StatusBar.currentHeight;
+export const stageHeight = h - /* statusHeight - */ 120;
 export const DeviceWidth = Dimensions.get('window').width;
 
 export function Picker() {
