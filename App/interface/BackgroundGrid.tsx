@@ -6,8 +6,8 @@ import Svg, {Line} from 'react-native-svg';
 import {useSettings} from './storage/useSettings';
 import {stageHeight, DeviceWidth} from './style';
 
-let json = require('../assets/notes.json');
-let items = json.notes;
+const json = require('../assets/notes.json');
+const items = json.notes;
 
 export function BackgroundGrid() {
   const [{prime, range}] = useSettings();

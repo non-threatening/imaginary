@@ -1,4 +1,7 @@
 export const images = {
+  sineBlack: require('./Sine_Black_60.gif'),
+  sineBlackPng: require('./SineBlack.png'),
+
   sawtooth: require('./Saw_Green_60.gif'),
   sine: require('./Sine_Green_60.gif'),
   square: require('./Square_Green_60.gif'),

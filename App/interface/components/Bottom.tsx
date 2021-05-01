@@ -12,7 +12,7 @@ import {Toggle} from './Toggle';
 
 export function Bottom() {
   const [toggled, setToggled] = useState(false);
-  const [{spawnArray}, dispatchSpawn] = useSpawnArray();
+  const [{}, dispatchSpawn] = useSpawnArray();
   const [{prime}] = useSettings();
   const primeColor = [
     prime ? prime.red : 0,
@@ -35,7 +35,7 @@ export function Bottom() {
             android_ripple={{
               color: `rgba(${primeColor}, 0.2)`,
             }}
-            label="Spawn Component"
+            label="New Sine"
             name="sine"
             style={[
               _style.button,

@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useEffect, useState} from 'react';
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import {
@@ -18,7 +19,7 @@ import {useSettings} from '../interface/storage/useSettings';
 
 const Knob = props => {
   const [{}, dispatchSpawn] = useSpawnArray();
-  const {name, spawnNum, xPos, yPos} = props;
+  const {spawnNum, xPos, yPos} = props;
   const [playing, setPlaying] = useState(false);
   const [opened, setOpened] = useState(false);
   const [{prime, range}] = useSettings();
@@ -47,6 +48,7 @@ const Knob = props => {
           styles.box,
           {
             backgroundColor: `rgba(${primeColor}, 0.75)`,
+            borderColor: `rgba(${primeColor}, 0.75)`,
           },
         ]}
         android_ripple={{
@@ -60,8 +62,8 @@ const Knob = props => {
         }}
       >
         <Image
-          source={playing ? images.sineFff : images.sinePaused}
-          style={styles.image}
+          source={playing ? images.sineBlack : images.sineBlackPng}
+          style={[styles.image, {opacity: playing ? 1 : 0.666}]}
         />
         <Menu
           name={spawnNum.toString()}
@@ -101,9 +103,10 @@ const Knob = props => {
             </MenuOption>
           </MenuOptions>
         </Menu>
-        <P>{[name, ': ', spawnNum.toString()]}</P>
-        <P>{xVol.toFixed(2).toString()}</P>
-        <P>{yFreq.toFixed(0).toString()}</P>
+        <View style={styles.textBox}>
+          <P>{xVol.toFixed(2).toString()}</P>
+          <P>{yFreq.toFixed(0).toString()}</P>
+        </View>
       </Pressable>
     </>
   );
@@ -124,7 +127,9 @@ const Knob = props => {
 }; // Knob
 
 function P(props) {
-  return <Text {...props} style={[props.style, styles.text]} />;
+  return (
+    <Text {...props} style={[props.style, styles.text, _style.textStyle]} />
+  );
 }
 
 function Button(props) {
@@ -141,10 +146,11 @@ function Button(props) {
 const styles = StyleSheet.create({
   box: {
     alignSelf: 'center',
-    borderRadius: 5,
+    borderRadius: 4,
+    borderStyle: 'dotted',
+    borderWidth: 2,
     height: 60,
     overflow: 'hidden',
-    padding: 2,
     width: 60,
     zIndex: 200,
   },
@@ -153,8 +159,14 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 60,
   },
+  textBox: {
+    height: 60,
+    justifyContent: 'space-between',
+    paddingBottom: 5,
+    position: 'absolute',
+    width: 60,
+  },
   text: {
-    color: '#000',
     textAlign: 'center',
   },
   trigger: {
