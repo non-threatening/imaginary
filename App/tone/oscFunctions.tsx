@@ -18,3 +18,17 @@ export function masterVolume(db) {
       Tone.Master.volume.rampTo(${db}, 0.05);
     `);
 }
+
+export function masterMute(db, muted) {
+  if (!muted) {
+    return this.webview.injectJavaScript(`
+    Tone.Master.volume.rampTo(-Infinity, 0.05);
+    // window.ReactNativeWebView.postMessage('${db}, ${muted}');
+  `);
+  } else {
+    return this.webview.injectJavaScript(`
+    Tone.Master.volume.rampTo(${db}, 0.05);
+    // window.ReactNativeWebView.postMessage('${db}, ${muted}');
+  `);
+  }
+}

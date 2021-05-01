@@ -1,9 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 
 import {AddSpawn, useSpawnArray} from '../../rn-spawn-component';
-import {masterDisposeAllOsc} from '../../tone';
+import {masterDisposeAllOsc, masterMute} from '../../tone';
 import _style from '../style';
 import {useSettings} from '../storage/useSettings';
 import {Button} from './Button';
@@ -11,7 +11,8 @@ import {SpawnMenu} from './SpawnMenu';
 import {Toggle} from './Toggle';
 
 export function Bottom() {
-  const [{}, dispatchSpawn] = useSpawnArray();
+  const [toggled, setToggled] = useState(false);
+  const [{spawnArray}, dispatchSpawn] = useSpawnArray();
   const [{prime}] = useSettings();
   const primeColor = [
     prime ? prime.red : 0,
@@ -47,7 +48,12 @@ export function Bottom() {
 
           <Button onPress={() => removeAll()} text=" Refresh" icon="broom" />
 
-          <Toggle onPress={() => removeAll()} text=" Mute All" icon="broom" />
+          <Toggle
+            onPress={() => muteAll()}
+            text=" Mute All"
+            icon={toggled ? 'volume-variant-off' : 'volume-vibrate'}
+            toggled={toggled}
+          />
 
           <SpawnMenu />
         </View>
@@ -59,6 +65,11 @@ export function Bottom() {
     masterDisposeAllOsc();
     dispatchSpawn({type: 'KILL_ALL_SPAWN'});
   }
+
+  function muteAll() {
+    setToggled(!toggled);
+    masterMute(-1, toggled);
+  }
 }
 
 const styles = StyleSheet.create({
@@ -68,6 +79,7 @@ const styles = StyleSheet.create({
     borderRadius: 1,
     borderWidth: 1,
     flexDirection: 'row',
+    flexWrap: 'wrap',
     height: 120,
     justifyContent: 'center',
   },

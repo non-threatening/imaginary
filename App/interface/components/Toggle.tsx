@@ -1,5 +1,6 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {Pressable, StyleSheet, Text} from 'react-native';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {useSettings} from '../storage/useSettings';
@@ -21,7 +22,12 @@ export function Toggle(props) {
         styles.button,
         props.style,
         {
-          borderColor: `rgba(${primeColor}, 0.75)`,
+          backgroundColor: props.toggled
+            ? 'rgba(0, 0, 0, 0.15)'
+            : 'rgba(0, 0, 0, 0.5)',
+          borderColor: props.toggled
+            ? `rgba(${primeColor}, 0.75)`
+            : `rgba(${primeColor}, 0.5)`,
         },
       ]}
     >
@@ -33,6 +39,17 @@ export function Toggle(props) {
         />
       </Text>
       <Text style={styles.textStyle}>{props.text}</Text>
+      <View
+        style={[
+          styles.led,
+          {
+            backgroundColor: props.toggled
+              ? `rgba(${primeColor}, 0.75)`
+              : '#000',
+            borderColor: `rgba(${primeColor}, 0.75)`,
+          },
+        ]}
+      />
     </Pressable>
   );
 }
@@ -50,6 +67,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     margin: 5,
     padding: 8,
+  },
+  led: {
+    borderStyle: 'dotted',
+    borderWidth: 1,
+    borderRadius: 2,
+    height: 10,
+    marginLeft: 8,
+    marginTop: 1,
+    width: 12,
   },
   textStyle: {
     color: 'rgba(255, 255, 255, 0.75)',
