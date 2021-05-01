@@ -8,6 +8,7 @@ import _style from '../style';
 import {useSettings} from '../storage/useSettings';
 import {Button} from './Button';
 import {SpawnMenu} from './SpawnMenu';
+import {Toggle} from './Toggle';
 
 export function Bottom() {
   const [{}, dispatchSpawn] = useSpawnArray();
@@ -45,6 +46,8 @@ export function Bottom() {
           />
 
           <Button onPress={() => removeAll()} text=" Refresh" icon="broom" />
+
+          <Toggle onPress={() => removeAll()} text=" Mute All" icon="broom" />
 
           <SpawnMenu />
         </View>
