@@ -8,25 +8,31 @@ import {
   renderers,
 } from 'react-native-popup-menu';
 const {Popover} = renderers;
-import {useSpawnArray} from '../rn-spawn-component';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {images} from './img';
-import _style, {color, stageHeight, DeviceWidth} from '../interface/style';
+import {useSpawnArray} from '../rn-spawn-component';
 import {soloDispose, soloPause, soloPitchVolume} from '../tone';
+import _style, {color, stageHeight, DeviceWidth} from '../interface/style';
 import {useSettings} from '../interface/storage/useSettings';
 
 const Knob = props => {
   const [{}, dispatchSpawn] = useSpawnArray();
-  const {name, spawnNum, xPos, yPos = 400} = props;
+  const {name, spawnNum, xPos, yPos} = props;
   const [playing, setPlaying] = useState(false);
   const [opened, setOpened] = useState(false);
   const [{prime, range}] = useSettings();
-  const primeColor = [prime.red, prime.green, prime.blue];
+  const primeColor = [
+    prime ? prime.red : 0,
+    prime ? prime.green : 255,
+    prime ? prime.blue : 255,
+  ];
+  const minRange = range ? range[0] : 0;
+  const maxRange = range ? range[1] : 2000;
 
-  // prettier-ignore
-  let yFreq =
-    ((1 + ((yPos + stageHeight * 0.5) * -1) / stageHeight) * (range[1] - range[0])) + range[0];
+  let normalize =
+    (1 + ((yPos + stageHeight * 0.5) / stageHeight) * -1) * stageHeight;
+  let yFreq = minRange + (normalize * (maxRange - minRange)) / stageHeight;
 
   let xVol = (1 + ((xPos + DeviceWidth * 0.5) / DeviceWidth) * -1) * -40;
 

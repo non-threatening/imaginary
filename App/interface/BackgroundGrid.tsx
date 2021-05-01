@@ -11,14 +11,20 @@ let items = json.notes;
 
 export function BackgroundGrid() {
   const [{prime, range}] = useSettings();
-  const primeColor = [prime.red, prime.green, prime.blue];
+  const primeColor = [
+    prime ? prime.red : 0,
+    prime ? prime.green : 255,
+    prime ? prime.blue : 255,
+  ];
+  const minRange = range ? range[0] : 0;
+  const maxRange = range ? range[1] : 2000;
 
   function offSet(freq) {
-    return ((freq - range[1]) * stageHeight) / (range[0] - range[1]);
+    return ((freq - maxRange) * stageHeight) / (minRange - maxRange);
   }
 
   let lineList = items.map((item, index) => {
-    return item.frequency > range[0] && item.frequency < range[1] ? (
+    return item.frequency > minRange && item.frequency < maxRange ? (
       <Line
         key={index}
         stroke={`rgb(${primeColor})`}
@@ -33,8 +39,8 @@ export function BackgroundGrid() {
   });
 
   let textList = items.map((item, index) => {
-    return item.frequency > range[0] &&
-      item.frequency < range[1] &&
+    return item.frequency > minRange &&
+      item.frequency < maxRange &&
       !(index % 4) ? (
       <Text
         key={index}

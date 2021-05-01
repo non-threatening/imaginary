@@ -9,7 +9,14 @@ import Label from './SliderLabel';
 
 export function RangeSlider() {
   const [{prime, range}, dispatch] = useSettings();
-  const primeColor = [prime.red, prime.green, prime.blue];
+  const primeColor = [
+    prime ? prime.red : 0,
+    prime ? prime.green : 255,
+    prime ? prime.blue : 255,
+  ];
+  const minRange = range ? range[0] : 0;
+  const maxRange = range ? range[1] : 2000;
+
   const [multiSliderValue, setMultiSliderValue] = useState(range);
 
   useEffect(() => {
@@ -45,7 +52,7 @@ export function RangeSlider() {
         }}
       >
         <MultiSlider
-          values={[range[0], range[1]]}
+          values={[minRange, maxRange]}
           sliderLength={200}
           onValuesChange={thing => setMultiSliderValue(thing)}
           min={0}

@@ -14,7 +14,11 @@ export const DeviceWidth = Dimensions.get('window').width;
 
 export function Picker() {
   const [{prime}, dispatch] = useSettings();
-  const primeColor = [prime.red, prime.green, prime.blue];
+  const primeColor = [
+    prime ? prime.red : 0,
+    prime ? prime.green : 255,
+    prime ? prime.blue : 255,
+  ];
   return (
     <TriangleColorPicker
       onColorChange={color => {
