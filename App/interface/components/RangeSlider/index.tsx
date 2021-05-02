@@ -6,6 +6,9 @@ import {storeData} from '../../storage/storeData';
 import {useSettings} from '../../storage/useSettings';
 import Label from './SliderLabel';
 
+const json = require('../../../assets/notes440.json');
+const items = json.notes;
+
 export function RangeSlider() {
   const [{prime, range}, dispatch] = useSettings();
   const primeColor = [
@@ -28,6 +31,10 @@ export function RangeSlider() {
     }
   }, [multiSliderValue]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const noteList = items.map(item => {
+    return item.frequency;
+  });
+
   return (
     <View style={styles.box}>
       <View
@@ -41,31 +48,10 @@ export function RangeSlider() {
         <MultiSlider
           customLabel={Label}
           enableLabel
-          max={8000}
-          min={0}
+          optionsArray={noteList}
           onValuesChange={thing => setMultiSliderValue(thing)}
           sliderLength={200}
-          snapped
-          step={1}
           values={[minRange, maxRange]}
-          trackStyle={{backgroundColor: `rgba(${primeColor}, 0.75)`}}
-          markerStyle={{backgroundColor: `rgba(${primeColor}, 0.75)`}}
-          selectedStyle={{backgroundColor: `rgba(${primeColor}, 0.75)`}}
-        />
-        <MultiSlider
-          max={16000}
-          min={0}
-          onValuesChange={thing => {
-            console.log(thing);
-            setMultiSliderValue([
-              thing * 0.5 - (maxRange - minRange) * 0.5,
-              thing * 0.5 + (maxRange - minRange) * 0.5,
-            ]);
-          }}
-          sliderLength={200}
-          snapped
-          step={1}
-          values={[maxRange - minRange]}
           trackStyle={{backgroundColor: `rgba(${primeColor}, 0.75)`}}
           markerStyle={{backgroundColor: `rgba(${primeColor}, 0.75)`}}
           selectedStyle={{backgroundColor: `rgba(${primeColor}, 0.75)`}}

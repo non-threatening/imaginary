@@ -36,11 +36,14 @@ export default class Label extends React.Component {
             <View
               style={[
                 styles.sliderLabel,
+                styles.sliderLabelMax,
                 {left: oneMarkerLeftPosition - width / 2 + sliderRadius},
                 oneMarkerPressed && styles.markerPressed,
               ]}
             >
-              <Text style={styles.sliderLabelText}>{oneMarkerValue}</Text>
+              <Text style={[styles.sliderLabelText]}>
+                {oneMarkerValue.toFixed(2)} hz
+              </Text>
             </View>
           )}
 
@@ -53,7 +56,9 @@ export default class Label extends React.Component {
                 twoMarkerPressed && styles.markerPressed,
               ]}
             >
-              <Text style={styles.sliderLabelText}>{twoMarkerValue} hz</Text>
+              <Text style={styles.sliderLabelText}>
+                {twoMarkerValue.toFixed(2)} hz
+              </Text>
             </View>
           )}
       </View>
@@ -69,6 +74,9 @@ const styles = StyleSheet.create({
     padding: 8,
     backgroundColor: color.secondary,
   },
+  sliderLabelMax: {
+    bottom: 25,
+  },
   sliderLabelText: {
     alignItems: 'center',
     textAlign: 'center',
@@ -77,6 +85,5 @@ const styles = StyleSheet.create({
   markerPressed: {
     // borderWidth: 2,
     // borderColor: '#999',
-    color: '#f33',
   },
 });

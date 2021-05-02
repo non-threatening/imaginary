@@ -29,7 +29,7 @@ export function BackgroundGrid() {
         key={index}
         stroke={`rgb(${primeColor})`}
         strokeWidth={1}
-        strokeOpacity={0.3}
+        strokeOpacity={!(index % 4) ? 0.4 : 0.25}
         x1={10}
         x2={DeviceWidth - 10}
         y1={offSet(item.frequency)}
