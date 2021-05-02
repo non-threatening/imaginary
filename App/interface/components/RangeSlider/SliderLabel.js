@@ -42,7 +42,7 @@ export default class Label extends React.Component {
               ]}
             >
               <Text style={[styles.sliderLabelText]}>
-                {oneMarkerValue.toFixed(2)} hz
+                {oneMarkerValue.toFixed(0)} hz
               </Text>
             </View>
           )}
@@ -57,7 +57,7 @@ export default class Label extends React.Component {
               ]}
             >
               <Text style={styles.sliderLabelText}>
-                {twoMarkerValue.toFixed(2)} hz
+                {twoMarkerValue.toFixed(0)} hz
               </Text>
             </View>
           )}

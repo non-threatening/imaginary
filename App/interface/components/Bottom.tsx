@@ -63,14 +63,14 @@ export function Bottom() {
             textStyle={_style.textStyle}
           />
 
-          <Button onPress={() => removeAll()} text=" Refresh" icon="broom" />
-
           <Toggle
             onPress={() => muteAll()}
             text=" Mute All"
             icon={toggled ? 'volume-variant-off' : 'volume-vibrate'}
             toggled={toggled}
           />
+
+          <Button onPress={() => removeAll()} text=" Refresh" icon="broom" />
 
           <SpawnMenu />
         </View>
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     height: 120,
-    justifyContent: 'center',
+    justifyContent: 'space-around',
   },
   imageBox: {
     borderRadius: 2,

@@ -33,7 +33,8 @@ const Knob = props => {
 
   let normalize =
     (1 + ((yPos + stageHeight * 0.5) / stageHeight) * -1) * stageHeight;
-  let yFreq = minRange + (normalize * (maxRange - minRange)) / stageHeight;
+  let yFreq =
+    36 + (minRange + (normalize * (maxRange - minRange)) / stageHeight);
 
   let xVol = (1 + ((xPos + DeviceWidth * 0.5) / DeviceWidth) * -1) * -40;
 

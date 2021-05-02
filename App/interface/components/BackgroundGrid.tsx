@@ -6,7 +6,7 @@ import Svg, {Line} from 'react-native-svg';
 import {useSettings} from '../storage/useSettings';
 import {stageHeight, DeviceWidth} from '../style';
 
-const json = require('../../assets/notes.json');
+const json = require('../../assets/notes440.json');
 const items = json.notes;
 
 export function BackgroundGrid() {
@@ -29,7 +29,7 @@ export function BackgroundGrid() {
         key={index}
         stroke={`rgb(${primeColor})`}
         strokeWidth={1}
-        strokeOpacity={!(index % 4) ? 0.4 : 0.25}
+        strokeOpacity={!(index % 3) ? 0.35 : 0.2}
         x1={10}
         x2={DeviceWidth - 10}
         y1={offSet(item.frequency)}
@@ -41,7 +41,7 @@ export function BackgroundGrid() {
   let textList = items.map((item, index) => {
     return item.frequency > minRange &&
       item.frequency < maxRange &&
-      !(index % 4) ? (
+      !(index % 3) ? (
       <Text
         key={index}
         style={{

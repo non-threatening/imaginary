@@ -1,12 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
-import {Image, Modal, StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
+import Modal from 'react-native-modal';
 
 import {images} from '../../draggable/img';
 import {AddSpawn} from '../../rn-spawn-component';
 import {useSettings} from '../storage/useSettings';
 // import {postMessage, Sweep} from '../../tone';
-import _style, {color} from '../style';
+import _style from '../style';
 import {Picker} from './ColorPicker';
 import {Button} from '../parts';
 import {RangeSlider} from './RangeSlider';
@@ -23,11 +24,13 @@ export function SpawnMenu() {
     <View>
       <Modal
         animationType="slide"
-        transparent={true}
-        visible={modalVisible}
+        onBackdropPress={() => setModalVisible(!modalVisible)}
         onRequestClose={() => {
           setModalVisible(!modalVisible);
         }}
+        transparent={true}
+        visible={modalVisible}
+        useNativeDriver={true}
       >
         <View
           style={[
@@ -115,14 +118,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   modalView: {
+    alignSelf: 'center',
     margin: 15,
-    backgroundColor: color.primary,
-    borderColor: color.outline,
     borderRadius: 3,
     borderStyle: 'dotted',
     borderWidth: 1,
     padding: 15,
-    alignItems: 'center',
     shadowColor: '#000',
     elevation: 5,
   },
