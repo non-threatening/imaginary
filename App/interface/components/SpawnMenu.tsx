@@ -6,7 +6,8 @@ import {images} from '../../draggable/img';
 import {AddSpawn} from '../../rn-spawn-component';
 import {useSettings} from '../storage/useSettings';
 // import {postMessage, Sweep} from '../../tone';
-import _style, {color, Picker} from '../style';
+import _style, {color} from '../style';
+import {Picker} from './ColorPicker';
 import {Button} from './Button';
 import {RangeSlider} from './RangeSlider';
 
@@ -86,13 +87,9 @@ export function SpawnMenu() {
             <Button onPress={() => Sweep()} text=" sweep" icon="broom" />
           </View> */}
 
-          <View>
-            <RangeSlider />
-          </View>
+          <RangeSlider />
 
-          <View style={{height: 200, width: 200}}>
-            <Picker />
-          </View>
+          <Picker />
         </View>
       </Modal>
       <Button

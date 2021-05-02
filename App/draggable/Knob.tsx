@@ -105,8 +105,8 @@ const Knob = props => {
           </MenuOptions>
         </Menu>
         <View style={styles.textBox}>
-          <P>{xVol.toFixed(2).toString()}</P>
-          <P>{yFreq.toFixed(0).toString()}</P>
+          <P>{xVol.toFixed(2).toString()} db</P>
+          <P>{yFreq.toFixed(0).toString()} hz</P>
         </View>
       </Pressable>
     </>
@@ -168,6 +168,7 @@ const styles = StyleSheet.create({
     width: 60,
   },
   text: {
+    fontSize: 11,
     textAlign: 'center',
   },
   trigger: {
