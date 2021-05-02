@@ -16,8 +16,8 @@ export function BackgroundGrid() {
     prime ? prime.green : 255,
     prime ? prime.blue : 255,
   ];
-  const minRange = range ? range[0] : 0;
-  const maxRange = range ? range[1] : 2000;
+  const minRange = range ? range[0] : 196;
+  const maxRange = range ? range[1] : 1760;
 
   function offSet(freq) {
     return ((freq - maxRange) * stageHeight) / (minRange - maxRange);
