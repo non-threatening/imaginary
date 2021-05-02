@@ -62,7 +62,6 @@ const Knob = props => {
         }}
       >
         <Image
-          blurRadius={playing ? 0 : 5}
           source={playing ? images.sineBlack : images.sineBlackPng}
           style={[styles.image, {opacity: playing ? 1 : 0.666}]}
         />

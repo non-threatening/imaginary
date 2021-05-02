@@ -5,7 +5,7 @@ import {KnobWrap} from '../draggable';
 import {SpawnProvider, SpawnController} from '../rn-spawn-component';
 import {stageHeight, DeviceWidth} from './style';
 import {Bottom} from './components/Bottom';
-import {BackgroundGrid} from './BackgroundGrid';
+import {BackgroundGrid} from './components/BackgroundGrid';
 
 export function Interface() {
   return (

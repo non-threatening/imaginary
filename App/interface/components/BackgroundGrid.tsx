@@ -3,10 +3,10 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import Svg, {Line} from 'react-native-svg';
 
-import {useSettings} from './storage/useSettings';
-import {stageHeight, DeviceWidth} from './style';
+import {useSettings} from '../storage/useSettings';
+import {stageHeight, DeviceWidth} from '../style';
 
-const json = require('../assets/notes.json');
+const json = require('../../assets/notes.json');
 const items = json.notes;
 
 export function BackgroundGrid() {
@@ -59,7 +59,7 @@ export function BackgroundGrid() {
   return (
     <View>
       {textList}
-      <Svg height={stageHeight} width={DeviceWidth}>
+      <Svg height={stageHeight + 120} width={DeviceWidth}>
         {lineList}
       </Svg>
     </View>

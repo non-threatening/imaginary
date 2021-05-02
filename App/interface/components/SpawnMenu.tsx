@@ -8,7 +8,7 @@ import {useSettings} from '../storage/useSettings';
 // import {postMessage, Sweep} from '../../tone';
 import _style, {color} from '../style';
 import {Picker} from './ColorPicker';
-import {Button} from './Button';
+import {Button} from '../parts';
 import {RangeSlider} from './RangeSlider';
 
 export function SpawnMenu() {
