@@ -1,10 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
-import {Modal, StyleSheet, View} from 'react-native';
+import {Image, Modal, StyleSheet, View} from 'react-native';
 
+import {images} from '../../draggable/img';
 import {AddSpawn} from '../../rn-spawn-component';
 import {useSettings} from '../storage/useSettings';
-import {postMessage, Sweep} from '../../tone';
+// import {postMessage, Sweep} from '../../tone';
 import _style, {color, Picker} from '../style';
 import {Button} from './Button';
 import {RangeSlider} from './RangeSlider';
@@ -48,8 +49,24 @@ export function SpawnMenu() {
               android_ripple={{
                 color: `rgba(${primeColor}, 0.2)`,
               }}
-              label="Spawn Component"
+              label="  New Sine"
               name="sine"
+              prepend={
+                <View
+                  style={[
+                    styles.imageBox,
+                    {borderColor: `rgba(${primeColor}, 0.75)`},
+                  ]}
+                >
+                  <Image
+                    source={images.sineIcon}
+                    style={[
+                      styles.image,
+                      {backgroundColor: `rgba(${primeColor}, 0.75)`},
+                    ]}
+                  />
+                </View>
+              }
               style={[
                 _style.button,
                 {
@@ -60,14 +77,14 @@ export function SpawnMenu() {
             />
           </View>
 
-          <View style={styles.row}>
+          {/* <View style={styles.row}>
             <Button
               onPress={() => postMessage('Webview connected')}
               text=" postMessage"
             />
 
             <Button onPress={() => Sweep()} text=" sweep" icon="broom" />
-          </View>
+          </View> */}
 
           <View>
             <RangeSlider />
@@ -88,6 +105,14 @@ export function SpawnMenu() {
 }
 
 const styles = StyleSheet.create({
+  imageBox: {
+    borderRadius: 2,
+    borderWidth: 1,
+  },
+  image: {
+    height: 13,
+    width: 13,
+  },
   row: {
     flexDirection: 'row',
     justifyContent: 'center',

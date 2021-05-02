@@ -1,5 +1,6 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
 import {storeData} from '../../storage/storeData';
@@ -16,8 +17,8 @@ export function RangeSlider() {
     prime ? prime.green : 255,
     prime ? prime.blue : 255,
   ];
-  const minRange = range ? range[0] : 140;
-  const maxRange = range ? range[1] : 666;
+  const minRange = range ? range[0] : 196;
+  const maxRange = range ? range[1] : 1760;
 
   const [multiSliderValue, setMultiSliderValue] = useState(range);
 
@@ -45,12 +46,15 @@ export function RangeSlider() {
           },
         ]}
       >
+        <Text style={{color: 'rgba(255, 255, 255, 0.75)', top: -40}}>
+          Range
+        </Text>
         <MultiSlider
           customLabel={Label}
           enableLabel
           optionsArray={noteList}
           onValuesChange={thing => setMultiSliderValue(thing)}
-          sliderLength={200}
+          sliderLength={180}
           values={[minRange, maxRange]}
           trackStyle={{backgroundColor: `rgba(${primeColor}, 0.75)`}}
           markerStyle={{backgroundColor: `rgba(${primeColor}, 0.75)`}}
@@ -72,8 +76,8 @@ const styles = StyleSheet.create({
     borderStyle: 'dotted',
     borderRadius: 4,
     borderWidth: 1,
-    height: 200,
-    justifyContent: 'space-evenly',
+    height: 150,
+    justifyContent: 'space-between',
     marginTop: 5,
     paddingTop: 50,
     width: 250,

@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     borderStyle: 'dotted',
     borderWidth: 1,
     borderRadius: 2,
-    height: 10,
+    height: 11,
     marginLeft: 8,
     marginTop: 1,
     width: 12,

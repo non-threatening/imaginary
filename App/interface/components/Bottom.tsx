@@ -36,9 +36,24 @@ export function Bottom() {
             android_ripple={{
               color: `rgba(${primeColor}, 0.2)`,
             }}
-            label=" New Sine"
+            label="  New Sine"
             name="sine"
-            prepend={<Image source={images.sineIcon} style={styles.image} />}
+            prepend={
+              <View
+                style={[
+                  styles.imageBox,
+                  {borderColor: `rgba(${primeColor}, 0.75)`},
+                ]}
+              >
+                <Image
+                  source={images.sineIcon}
+                  style={[
+                    styles.image,
+                    {backgroundColor: `rgba(${primeColor}, 0.75)`},
+                  ]}
+                />
+              </View>
+            }
             style={[
               _style.button,
               {
@@ -85,9 +100,12 @@ const styles = StyleSheet.create({
     height: 120,
     justifyContent: 'center',
   },
+  imageBox: {
+    borderRadius: 2,
+    borderWidth: 1,
+  },
   image: {
     height: 13,
-    opacity: 0.75,
     width: 13,
   },
 });

@@ -6,7 +6,7 @@ import {View, Text, StyleSheet} from 'react-native';
 import _style, {color} from '../../style';
 
 const sliderRadius = 3;
-const width = 50;
+const width = 90;
 export default class Label extends React.Component {
   static propTypes = {
     oneMarkerValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     backgroundColor: color.secondary,
   },
   sliderLabelMax: {
-    bottom: 25,
+    bottom: 30,
   },
   sliderLabelText: {
     alignItems: 'center',
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     color: _style.textStyle.color,
   },
   markerPressed: {
-    // borderWidth: 2,
-    // borderColor: '#999',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.25)',
   },
 });
