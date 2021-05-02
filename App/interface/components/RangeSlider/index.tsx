@@ -16,8 +16,8 @@ export function RangeSlider() {
     prime ? prime.green : 255,
     prime ? prime.blue : 255,
   ];
-  const minRange = range ? range[0] : 0;
-  const maxRange = range ? range[1] : 2000;
+  const minRange = range ? range[0] : 140;
+  const maxRange = range ? range[1] : 666;
 
   const [multiSliderValue, setMultiSliderValue] = useState(range);
 

@@ -1,7 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 
+import {images} from '../../draggable/img';
 import {AddSpawn, useSpawnArray} from '../../rn-spawn-component';
 import {masterDisposeAllOsc, masterMute} from '../../tone';
 import _style from '../style';
@@ -35,8 +36,9 @@ export function Bottom() {
             android_ripple={{
               color: `rgba(${primeColor}, 0.2)`,
             }}
-            label="New Sine"
+            label=" New Sine"
             name="sine"
+            prepend={<Image source={images.sineIcon} style={styles.image} />}
             style={[
               _style.button,
               {
@@ -82,5 +84,10 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     height: 120,
     justifyContent: 'center',
+  },
+  image: {
+    height: 13,
+    opacity: 0.75,
+    width: 13,
   },
 });
