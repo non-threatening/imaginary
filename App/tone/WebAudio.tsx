@@ -1,10 +1,7 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {WebView} from 'react-native-webview';
 
 import RNBootSplash from 'react-native-bootsplash';
-
-// RNBootSplash.hide({fade: true}); // fade
 
 const WebAudio = () => {
   return (

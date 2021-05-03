@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {fromHsv, TriangleColorPicker} from 'react-native-color-picker';

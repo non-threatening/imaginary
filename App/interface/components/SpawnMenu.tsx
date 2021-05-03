@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import Modal from 'react-native-modal';
@@ -86,7 +85,6 @@ export function SpawnMenu() {
               onPress={() => postMessage('Webview connected')}
               text=" postMessage"
             />
-
             <Button onPress={() => Sweep()} text=" sweep" icon="broom" />
           </View> */}
 
