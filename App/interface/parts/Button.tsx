@@ -4,7 +4,15 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {useSettings} from '../storage/useSettings';
 
-export function Button(props) {
+interface buttonProps {
+  onPress: any;
+  style: object;
+  icon: string;
+  size: number;
+  text: string;
+}
+
+export function Button({onPress, style, icon, size, text}: buttonProps) {
   const [{prime}] = useSettings();
   const primeColor = [
     prime ? prime.red : 0,
@@ -16,10 +24,10 @@ export function Button(props) {
       android_ripple={{
         color: `rgba(${primeColor}, 0.2)`,
       }}
-      onPress={props.onPress}
+      onPress={onPress}
       style={[
         styles.button,
-        props.style,
+        style,
         {
           borderColor: `rgba(${primeColor}, 0.75)`,
         },
@@ -27,12 +35,12 @@ export function Button(props) {
     >
       <Text>
         <Icon
-          name={props.icon ? props.icon : null}
-          size={props.size ? props.size : 20}
+          name={icon ? icon : null}
+          size={size ? size : 20}
           color={`rgba(${primeColor}, 0.75)`}
         />
       </Text>
-      <Text style={styles.textStyle}>{props.text}</Text>
+      <Text style={styles.textStyle}>{text}</Text>
     </Pressable>
   );
 }

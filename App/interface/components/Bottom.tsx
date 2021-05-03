@@ -8,7 +8,6 @@ import _style from '../style';
 import {useSettings} from '../storage/useSettings';
 import {Button, Toggle} from '../parts';
 import {SpawnMenu} from './SpawnMenu';
-// import {Toggle} from './Toggle';
 
 export function Bottom() {
   const [toggled, setToggled] = useState(false);

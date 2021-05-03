@@ -4,7 +4,23 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {useSettings} from '../storage/useSettings';
 
-export function Toggle(props) {
+interface toggleProps {
+  onPress: any;
+  style: object;
+  toggled: boolean;
+  icon: string;
+  size: number;
+  text: string;
+}
+
+export function Toggle({
+  onPress,
+  style,
+  toggled,
+  icon,
+  size,
+  text,
+}: toggleProps) {
   const [{prime}] = useSettings();
   const primeColor = [
     prime ? prime.red : 0,
@@ -16,15 +32,15 @@ export function Toggle(props) {
       android_ripple={{
         color: `rgba(${primeColor}, 0.2)`,
       }}
-      onPress={props.onPress}
+      onPress={onPress}
       style={[
         styles.button,
-        props.style,
+        style,
         {
-          backgroundColor: props.toggled
+          backgroundColor: toggled
             ? 'rgba(0, 0, 0, 0.15)'
             : 'rgba(0, 0, 0, 0.5)',
-          borderColor: props.toggled
+          borderColor: toggled
             ? `rgba(${primeColor}, 0.75)`
             : `rgba(${primeColor}, 0.5)`,
         },
@@ -32,19 +48,17 @@ export function Toggle(props) {
     >
       <Text>
         <Icon
-          name={props.icon ? props.icon : null}
-          size={props.size ? props.size : 20}
+          name={icon ? icon : null}
+          size={size ? size : 20}
           color={`rgba(${primeColor}, 0.75)`}
         />
       </Text>
-      <Text style={styles.textStyle}>{props.text}</Text>
+      <Text style={styles.textStyle}>{text}</Text>
       <View
         style={[
           styles.led,
           {
-            backgroundColor: props.toggled
-              ? `rgba(${primeColor}, 0.75)`
-              : '#000',
+            backgroundColor: toggled ? `rgba(${primeColor}, 0.75)` : '#000',
             borderColor: `rgba(${primeColor}, 0.75)`,
           },
         ]}

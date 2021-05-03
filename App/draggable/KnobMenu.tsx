@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {
   Menu,
   MenuOptions,
@@ -8,16 +8,24 @@ import {
   renderers,
 } from 'react-native-popup-menu';
 const {Popover} = renderers;
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {useSpawnArray} from '../rn-spawn-component';
 import {soloDispose} from '../tone';
 import {Button} from '../interface/parts';
 import {useSettings} from '../interface/storage/useSettings';
 
-export const KnobMenu = props => {
+interface knobMenuProps {
+  menuOpened: boolean;
+  setMenuOpened: any;
+  spawnNum: number;
+}
+
+export const KnobMenu = ({
+  menuOpened,
+  setMenuOpened,
+  spawnNum,
+}: knobMenuProps) => {
   const [{}, dispatchSpawn] = useSpawnArray();
-  const {menuOpened, setMenuOpened, spawnNum} = props;
   const [{prime}] = useSettings();
   const primeColor = [
     prime ? prime.red : 0,
@@ -27,7 +35,7 @@ export const KnobMenu = props => {
 
   return (
     <Menu
-      name={spawnNum.toString()}
+      name={spawnNum ? spawnNum.toString() : null}
       onBackdropPress={() => setMenuOpened(!menuOpened)}
       opened={menuOpened}
       renderer={Popover}
@@ -42,18 +50,9 @@ export const KnobMenu = props => {
         customStyles={optionsStyles}
         style={{
           backgroundColor: `rgba(${primeColor}, 0.2)`,
+          paddingVertical: 5,
         }}
       >
-        <MenuOption onSelect={() => setMenuOpened(!menuOpened)}>
-          <Text>
-            <Icon
-              name={'close-box-outline'}
-              size={32}
-              color={`rgba(${primeColor}, 0.75)`}
-            />
-          </Text>
-        </MenuOption>
-
         <MenuOption>
           <Button
             color={`rgba(${primeColor}, 0.75)`}

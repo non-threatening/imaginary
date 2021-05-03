@@ -7,8 +7,13 @@ import {soloPause, soloPitchVolume} from '../tone';
 import _style, {stageHeight, DeviceWidth} from '../interface/style';
 import {useSettings} from '../interface/storage/useSettings';
 
-const Knob = props => {
-  const {spawnNum, xPos, yPos} = props;
+interface knobProps {
+  spawnNum: number;
+  xPos: number;
+  yPos: number;
+}
+
+const Knob = ({spawnNum, xPos, yPos}: knobProps) => {
   const [playing, setPlaying] = useState(false);
   const [menuOpened, setMenuOpened] = useState(false);
   const [{prime, range}] = useSettings();
@@ -32,40 +37,38 @@ const Knob = props => {
   }, [spawnNum, xVol, playing, range, yFreq]);
 
   return (
-    <>
-      <Pressable
-        android_ripple={{
-          color: `rgba(${primeColor}, 0.2)`,
-        }}
-        onLongPress={() => {
-          long();
-        }}
-        onPress={() => {
-          tap();
-        }}
-        style={[
-          styles.box,
-          {
-            backgroundColor: `rgba(${primeColor}, 0.75)`,
-            borderColor: `rgba(${primeColor}, 0.75)`,
-          },
-        ]}
-      >
-        <Image
-          source={playing ? images.sineBlack : images.sineBlackPng}
-          style={[styles.image, {opacity: playing ? 1 : 0.666}]}
-        />
-        <KnobMenu
-          menuOpened={menuOpened}
-          setMenuOpened={setMenuOpened}
-          spawnNum={spawnNum}
-        />
-        <View style={styles.textBox}>
-          <P>{xVol.toFixed(2).toString()} db</P>
-          <P>{yFreq.toFixed(0).toString()} hz</P>
-        </View>
-      </Pressable>
-    </>
+    <Pressable
+      android_ripple={{
+        color: `rgba(${primeColor}, 0.2)`,
+      }}
+      onLongPress={() => {
+        long();
+      }}
+      onPress={() => {
+        tap();
+      }}
+      style={[
+        styles.box,
+        {
+          backgroundColor: `rgba(${primeColor}, 0.75)`,
+          borderColor: `rgba(${primeColor}, 0.75)`,
+        },
+      ]}
+    >
+      <Image
+        source={playing ? images.sineBlack : images.sineBlackPng}
+        style={[styles.image, {opacity: playing ? 1 : 0.666}]}
+      />
+      <KnobMenu
+        menuOpened={menuOpened}
+        setMenuOpened={setMenuOpened}
+        spawnNum={spawnNum}
+      />
+      <View style={styles.textBox}>
+        <P>{xVol.toFixed(2).toString()} db</P>
+        <P>{yFreq.toFixed(0).toString()} hz</P>
+      </View>
+    </Pressable>
   );
 
   function tap() {
@@ -79,9 +82,7 @@ const Knob = props => {
 }; // Knob
 
 function P(props) {
-  return (
-    <Text {...props} style={[props.style, styles.text, _style.textStyle]} />
-  );
+  return <Text {...props} style={[styles.text, _style.textStyle]} />;
 }
 
 const styles = StyleSheet.create({
