@@ -16,7 +16,8 @@
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
         android:windowSoftInputMode="adjustResize"
         android:exported="true"
-        android:launchMode="singleTask">
+        android:launchMode="singleTask"
+        android:screenOrientation="portrait">
       </activity>
 
       <!-- add the following lines (use the theme you created at step 2) -->
