@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import Svg, {Line} from 'react-native-svg';
+import Svg, {Line, Text as TextSvg} from 'react-native-svg';
 
 import {useSettings} from '../storage/useSettings';
 import {stageHeight, DeviceWidth} from '../style';
@@ -32,7 +32,7 @@ export function BackgroundGrid() {
         strokeOpacity={
           !((index + randRange) % Math.round((items.length - index) / 10))
             ? 0.3
-            : 0.2
+            : 0.15
         }
         x1={5}
         x2={DeviceWidth - 5}
@@ -65,14 +65,38 @@ export function BackgroundGrid() {
       {textList}
       <Svg height={stageHeight} width={DeviceWidth}>
         {lineList}
-        <VolumeLine stroke={`rgb(${primeColor})`} x={0.5} />
+        <VolumeLine
+          stroke={`rgb(${primeColor})`}
+          strokeOpacity={0.21}
+          x={0.5}
+        />
         <VolumeLine stroke={`rgb(${primeColor})`} x={0.75} />
         <VolumeLine
           stroke={`rgb(${primeColor})`}
-          strokeOpacity={0.225}
+          strokeOpacity={0.21}
           x={0.875}
         />
         <VolumeLine stroke={`rgb(${primeColor})`} x={0.9375} />
+        <TextSvg
+          fill={`rgba(${primeColor}, 0.4)`}
+          stroke={'none'}
+          fontSize={14}
+          x={DeviceWidth * 0.5 - 5}
+          y={30}
+          textAnchor={'end'}
+        >
+          - 20 db
+        </TextSvg>
+        <TextSvg
+          fill={`rgba(${primeColor}, 0.4)`}
+          stroke={'none'}
+          fontSize={14}
+          x={DeviceWidth * 0.875 - 5}
+          y={30}
+          textAnchor={'end'}
+        >
+          0 db
+        </TextSvg>
       </Svg>
     </View>
   );

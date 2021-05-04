@@ -44,7 +44,7 @@ export function SpawnMenu() {
             onPress={() => setModalVisible(!modalVisible)}
             size={36}
             icon="close-box-outline"
-            style={{left: 5, padding: 2, position: 'absolute', top: 5}}
+            style={{left: 5, padding: 2, position: 'absolute', top: 8}}
           />
 
           <View style={styles.row}>

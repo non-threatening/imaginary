@@ -30,7 +30,8 @@ const Knob = ({spawnNum, xPos, yPos}: knobProps) => {
   let yFreq =
     36 + (minRange + (normalize * (maxRange - minRange)) / stageHeight);
 
-  let xVol = (1 + ((xPos + DeviceWidth * 0.5) / DeviceWidth) * -1) * -40;
+  let xVol =
+    (1 + ((xPos + DeviceWidth * 0.75 * 0.5) / (DeviceWidth * 0.75)) * -1) * -40;
 
   useEffect(() => {
     soloPitchVolume(spawnNum, xVol, yFreq, playing);
@@ -51,7 +52,7 @@ const Knob = ({spawnNum, xPos, yPos}: knobProps) => {
         styles.box,
         {
           backgroundColor: `rgba(${primeColor}, 0.75)`,
-          borderColor: `rgba(${primeColor}, 0.75)`,
+          borderColor: `rgba(${primeColor}, 0.35)`,
         },
       ]}
     >
@@ -89,8 +90,8 @@ const styles = StyleSheet.create({
   box: {
     alignSelf: 'center',
     borderRadius: 4,
-    borderStyle: 'dotted',
-    borderWidth: 2,
+    // borderStyle: 'dotted',
+    borderWidth: 1,
     height: 60,
     overflow: 'hidden',
     width: 60,
