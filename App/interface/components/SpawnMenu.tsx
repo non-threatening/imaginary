@@ -124,5 +124,6 @@ const styles = StyleSheet.create({
     padding: 15,
     shadowColor: '#000',
     elevation: 5,
+    width: 300,
   },
 });
