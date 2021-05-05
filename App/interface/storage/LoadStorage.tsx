@@ -11,7 +11,7 @@ export function LoadStorage() {
         const things = await AsyncStorage.multiGet(['@rgb', '@range']);
         setValues(things);
       } catch (e) {
-        console.warn(e);
+        console.log(e);
       }
     }
     getData();

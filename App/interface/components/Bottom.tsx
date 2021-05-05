@@ -56,6 +56,7 @@ export function Bottom() {
               _style.button,
               {
                 borderColor: `rgba(${primeColor}, 0.75)`,
+                padding: 9,
               },
             ]}
             textStyle={_style.textStyle}
@@ -97,6 +98,8 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     height: 120,
     justifyContent: 'space-around',
+    margin: 5,
+    padding: 0,
   },
   imageBox: {
     borderRadius: 2,
