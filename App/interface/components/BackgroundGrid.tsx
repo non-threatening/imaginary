@@ -95,7 +95,7 @@ export function BackgroundGrid() {
           y={30}
           textAnchor={'end'}
         >
-          0 db
+          - 0 db
         </TextSvg>
       </Svg>
     </View>
