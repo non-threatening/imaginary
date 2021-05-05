@@ -131,11 +131,11 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.imaginary"
+        applicationId "com.non_threatening.imaginary"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 20
+        versionName "0.2.0"
     }
     splits {
         abi {

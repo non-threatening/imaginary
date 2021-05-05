@@ -1,4 +1,4 @@
-package com.imaginary;
+package com.non_threatening.imaginary;
 
 import android.os.Bundle;
 
@@ -22,7 +22,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "Imaginary";
+    return "ImaginaryTheremin";
   }
   @Override
   protected ReactActivityDelegate createReactActivityDelegate() {

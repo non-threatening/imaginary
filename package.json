@@ -1,6 +1,6 @@
 {
-  "name": "imaginary",
-  "version": "0.0.1",
+  "name": "ImaginaryTheremin",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
