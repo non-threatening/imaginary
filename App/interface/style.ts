@@ -1,7 +1,7 @@
-import {Dimensions, /* StatusBar, */ StyleSheet} from 'react-native';
+import {Dimensions, StatusBar, StyleSheet} from 'react-native';
 
 const h = Dimensions.get('window').height;
-// const statusHeight = StatusBar.currentHeight;
+export const statusHeight = StatusBar.currentHeight;
 export const stageHeight = h - /* statusHeight - */ 120;
 export const DeviceWidth = Dimensions.get('window').width;
 

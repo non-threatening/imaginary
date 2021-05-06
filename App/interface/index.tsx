@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StatusBar, StyleSheet, View} from 'react-native';
 
 import {KnobWrap} from '../draggable';
 import {SpawnProvider, SpawnController} from '../rn-spawn-component';
@@ -17,6 +17,11 @@ export function Interface() {
   ];
   return (
     <>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="rgba(0, 0, 0, 0)"
+        translucent={true}
+      />
       <SpawnProvider>
         <View style={styles.body}>
           <View style={{backgroundColor: `rgba(${primeColor}, .05)`}}>

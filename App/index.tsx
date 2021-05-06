@@ -1,5 +1,4 @@
 import React from 'react';
-import {StatusBar} from 'react-native';
 import {MenuProvider} from 'react-native-popup-menu';
 
 import WebAudio from './tone/WebAudio';
@@ -13,7 +12,6 @@ import {
 const App = () => {
   return (
     <>
-      <StatusBar barStyle="light-content" />
       <SettingsProvider SettingsReducer={SettingsReducer}>
         <MenuProvider>
           <LoadStorage />

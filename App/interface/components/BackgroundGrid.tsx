@@ -3,7 +3,7 @@ import {Text, View} from 'react-native';
 import Svg, {Line, Text as TextSvg} from 'react-native-svg';
 
 import {useSettings} from '../storage/useSettings';
-import {stageHeight, DeviceWidth} from '../style';
+import {stageHeight, statusHeight, DeviceWidth} from '../style';
 
 const json = require('../../assets/notes440.json');
 const items = json.notes;
@@ -82,7 +82,7 @@ export function BackgroundGrid() {
           stroke={'none'}
           fontSize={14}
           x={DeviceWidth * 0.5 - 5}
-          y={30}
+          y={12 + statusHeight}
           textAnchor={'end'}
         >
           - 20 db
@@ -92,7 +92,7 @@ export function BackgroundGrid() {
           stroke={'none'}
           fontSize={14}
           x={DeviceWidth * 0.875 - 5}
-          y={30}
+          y={12 + statusHeight}
           textAnchor={'end'}
         >
           - 0 db
