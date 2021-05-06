@@ -20,12 +20,12 @@ export function soloPause(osc, db, playing) {
   if (!playing) {
     return this.webview.injectJavaScript(`
     osc[${osc}].volume.rampTo(-Infinity, 0.05);
-    window.ReactNativeWebView.postMessage('${osc}, ${db}, ${playing}');
+    // window.ReactNativeWebView.postMessage('${osc}, ${db}, ${playing}');
   `);
   } else {
     return this.webview.injectJavaScript(`
     osc[${osc}].volume.rampTo(${db}, 0.05);
-    window.ReactNativeWebView.postMessage('${osc}, ${db}, ${playing}');
+    // window.ReactNativeWebView.postMessage('${osc}, ${db}, ${playing}');
   `);
   }
 }
@@ -42,6 +42,6 @@ export function soloPitchVolume(osc, db, pitch, playing) {
       osc[${osc}].volume.rampTo(${db}, 0.1);
     }
     osc[${osc}].frequency.rampTo(${pitch}, 0.05);
-    window.ReactNativeWebView.postMessage('${osc}, ${db}, ${pitch}, ${playing}');
+    // window.ReactNativeWebView.postMessage('${osc}, ${db}, ${pitch}, ${playing}');
   `);
 }
