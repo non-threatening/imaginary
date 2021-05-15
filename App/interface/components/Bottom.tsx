@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 
+import {RandomText} from '../../assets/gibsonText';
 import {images} from '../../draggable/img';
 import {AddSpawn, useSpawnArray} from '../../rn-spawn-component';
 import {masterDisposeAllOsc, masterMute} from '../../tone';
@@ -71,7 +72,14 @@ export function Bottom() {
 
           <Button onPress={() => removeAll()} text=" Refresh" icon="broom" />
 
+          <Button
+            onPress={() => removeAll()}
+            text=" Quick  Save"
+            icon="broom"
+          />
+
           <SpawnMenu />
+          <RandomText />
         </View>
       </View>
     </>
