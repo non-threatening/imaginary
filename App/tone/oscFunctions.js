@@ -15,14 +15,14 @@ export function masterDisposeAllOsc() {
 
 export function masterVolume(db) {
   return this.webview.injectJavaScript(`
-      Tone.Master.volume.rampTo(${db}, 0.05);
+      Tone.Master.volume.rampTo(${db}, 0.2);
     `);
 }
 
 export function masterMute(db, muted) {
   if (!muted) {
     return this.webview.injectJavaScript(`
-    Tone.Master.volume.rampTo(-Infinity, 0.05);
+    Tone.Master.volume.rampTo(-Infinity, 0.2);
     // window.ReactNativeWebView.postMessage('${db}, ${muted}');
   `);
   } else {

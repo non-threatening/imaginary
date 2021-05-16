@@ -19,7 +19,7 @@ export function soloDispose(osc) {
 export function soloPause(osc, db, playing) {
   if (!playing) {
     return this.webview.injectJavaScript(`
-    osc[${osc}].volume.rampTo(-Infinity, 0.05);
+    osc[${osc}].volume.rampTo(-Infinity, 0.2);
     // window.ReactNativeWebView.postMessage('${osc}, ${db}, ${playing}');
   `);
   } else {
