@@ -6,7 +6,7 @@ import {images} from '../../draggable/img';
 import {AddSpawn, useSpawnArray} from '../../rn-spawn-component';
 import {masterDisposeAllOsc, masterMute} from '../../tone';
 import _style from '../style';
-import {useSettings} from '../storage/useSettings';
+import {useSettings} from '../storage';
 import {Button, Toggle} from '../parts';
 import {SpawnMenu} from './SpawnMenu';
 

@@ -4,7 +4,7 @@ import Modal from 'react-native-modal';
 
 import {images} from '../../draggable/img';
 import {AddSpawn} from '../../rn-spawn-component';
-import {useSettings} from '../storage/useSettings';
+import {useSettings} from '../storage';
 // import {postMessage, Sweep} from '../../tone';
 import _style from '../style';
 import {Picker} from './ColorPicker';

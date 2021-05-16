@@ -2,7 +2,7 @@ import React from 'react';
 import {Pressable, StyleSheet, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {useSettings} from '../storage/useSettings';
+import {useSettings} from '../storage';
 
 interface buttonProps {
   onPress: any;

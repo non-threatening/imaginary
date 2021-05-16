@@ -3,11 +3,11 @@ import {MenuProvider} from 'react-native-popup-menu';
 
 import WebAudio from './tone/WebAudio';
 import {Interface} from './interface';
-import {LoadStorage} from './interface/storage/LoadStorage';
 import {
+  LoadStorage,
   SettingsReducer,
   SettingsProvider,
-} from './interface/storage/useSettings';
+} from './interface/storage';
 
 const App = () => {
   return (

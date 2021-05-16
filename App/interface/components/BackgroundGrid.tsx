@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import Svg, {Line, Text as TextSvg} from 'react-native-svg';
 
-import {useSettings} from '../storage/useSettings';
+import {useSettings} from '../storage';
 import {stageHeight, statusHeight, DeviceWidth} from '../style';
 
 const json = require('../../assets/notes440.json');

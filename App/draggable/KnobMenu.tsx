@@ -12,7 +12,7 @@ const {Popover} = renderers;
 import {useSpawnArray} from '../rn-spawn-component';
 import {soloDispose} from '../tone';
 import {Button} from '../interface/parts';
-import {useSettings} from '../interface/storage/useSettings';
+import {useSettings} from '../interface/storage';
 
 interface knobMenuProps {
   menuOpened: boolean;

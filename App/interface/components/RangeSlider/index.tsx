@@ -2,8 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
-import {storeData} from '../../storage/storeData';
-import {useSettings} from '../../storage/useSettings';
+import {storeData, useSettings} from '../../storage';
 import Label from './SliderLabel';
 
 const json = require('../../../assets/notes440.json');

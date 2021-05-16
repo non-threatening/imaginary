@@ -5,7 +5,7 @@ import {images} from './img';
 import {KnobMenu} from './KnobMenu';
 import {soloPause, soloPitchVolume} from '../tone';
 import _style, {stageHeight, DeviceWidth} from '../interface/style';
-import {useSettings} from '../interface/storage/useSettings';
+import {useSettings} from '../interface/storage';
 
 interface knobProps {
   spawnNum: number;

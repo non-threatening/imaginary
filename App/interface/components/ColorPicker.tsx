@@ -3,8 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import {fromHsv, TriangleColorPicker} from 'react-native-color-picker';
 import hexRgb from 'hex-rgb';
 
-import {storeData} from '../storage/storeData';
-import {useSettings} from '../storage/useSettings';
+import {storeData, useSettings} from '../storage';
 
 export function Picker() {
   const [{prime}, dispatch] = useSettings();

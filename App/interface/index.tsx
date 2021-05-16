@@ -6,7 +6,7 @@ import {SpawnProvider, SpawnController} from '../rn-spawn-component';
 import {stageHeight, DeviceWidth} from './style';
 import {Bottom} from './components/Bottom';
 import {BackgroundGrid} from './components/BackgroundGrid';
-import {useSettings} from './storage/useSettings';
+import {useSettings} from './storage';
 
 export function Interface() {
   const [{prime}] = useSettings();
