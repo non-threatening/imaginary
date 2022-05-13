@@ -14,17 +14,7 @@ import {soloDispose} from '../tone';
 import {Button} from '../interface/parts';
 import {useSettings} from '../interface/storage/useSettings';
 
-interface knobMenuProps {
-  menuOpened: boolean;
-  setMenuOpened: any;
-  spawnNum: number;
-}
-
-export const KnobMenu = ({
-  menuOpened,
-  setMenuOpened,
-  spawnNum,
-}: knobMenuProps) => {
+export const KnobMenu = ({menuOpened, setMenuOpened, spawnNum}) => {
   const [{}, dispatchSpawn] = useSpawnArray();
   const [{prime}] = useSettings();
   const primeColor = [

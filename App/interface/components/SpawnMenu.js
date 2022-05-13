@@ -11,8 +11,9 @@ import {Picker} from './ColorPicker';
 import {Button} from '../parts';
 import {RangeSlider} from './RangeSlider';
 
+// eslint-disable-next-line react-hooks/rules-of-hooks
+const [{prime}] = useSettings();
 export function SpawnMenu() {
-  const [{prime}] = useSettings();
   const primeColor = [
     prime ? prime.red : 0,
     prime ? prime.green : 255,
@@ -45,6 +46,7 @@ export function SpawnMenu() {
             size={36}
             icon="close-box-outline"
             style={{left: 5, padding: 2, position: 'absolute', top: 8}}
+            text={''}
           />
 
           <View style={styles.row}>

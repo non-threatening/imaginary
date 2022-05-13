@@ -4,23 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {useSettings} from '../storage/useSettings';
 
-interface toggleProps {
-  onPress: any;
-  style: object;
-  toggled: boolean;
-  icon: string;
-  size: number;
-  text: string;
-}
-
-export function Toggle({
-  onPress,
-  style,
-  toggled,
-  icon,
-  size,
-  text,
-}: toggleProps) {
+export function Toggle({onPress, style, toggled, icon, size, text}) {
   const [{prime}] = useSettings();
   const primeColor = [
     prime ? prime.red : 0,

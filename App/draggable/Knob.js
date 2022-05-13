@@ -7,13 +7,7 @@ import {soloPause, soloPitchVolume} from '../tone';
 import _style, {stageHeight, DeviceWidth} from '../interface/style';
 import {useSettings} from '../interface/storage/useSettings';
 
-interface knobProps {
-  spawnNum: number;
-  xPos: number;
-  yPos: number;
-}
-
-const Knob = ({spawnNum, xPos, yPos}: knobProps) => {
+const Knob = ({spawnNum, xPos, yPos}) => {
   const [playing, setPlaying] = useState(false);
   const [menuOpened, setMenuOpened] = useState(false);
   const [{prime, range}] = useSettings();

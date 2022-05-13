@@ -4,15 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {useSettings} from '../storage/useSettings';
 
-interface buttonProps {
-  onPress: any;
-  style: object;
-  icon: string;
-  size: number;
-  text: string;
-}
-
-export function Button({onPress, style, icon, size, text}: buttonProps) {
+export function Button({onPress, style, icon, size, text}) {
   const [{prime}] = useSettings();
   const primeColor = [
     prime ? prime.red : 0,
