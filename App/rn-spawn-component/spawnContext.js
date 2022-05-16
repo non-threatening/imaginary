@@ -14,7 +14,7 @@ export const reducer = (state, action) => {
       : 0;
     state.spawnArray.push([incSpawn, name]);
     const arraySpawn = [...state.spawnArray];
-    /*  */
+    /* a */
     addOsc(incSpawn, name, '-Infinity');
     /*  */
     return state.spawnArray.length ? arraySpawn : [0, name];
